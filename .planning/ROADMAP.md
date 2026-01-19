@@ -12,12 +12,44 @@ Build a knowledge base of vendor-agnostic patterns for using AI copilots in data
 
 Decimal phases appear between their surrounding integers in numeric order.
 
+- [x] **Phase 0: GSD Pattern Analysis** - Reference setup (completed via Quick 001)
+- [ ] **Phase 0.1: Integrate GSD Patterns** - Reflect Quick 001 findings into planning docs (INSERTED)
 - [ ] **Phase 1: Foundation & Templates** - File-based protocol and template structure
 - [ ] **Phase 2: Session Handoff System** - Eliminate context reconstruction between sessions
 - [ ] **Phase 3: Context Engineering Patterns** - Token budget management and context optimization
 - [ ] **Phase 4: Educational Integration & Validation** - Teach through templates and validate on real work
 
 ## Phase Details
+
+### Phase 0: GSD Pattern Analysis
+**Goal**: Analyze Get-Shit-Done framework patterns for application to data engineering copilot workflows
+**Depends on**: Nothing (initial setup)
+**Requirements**: None (discovery/research phase)
+**Status**: Completed via Quick Task 001
+
+**Completed work:**
+- Created `gsd_reference/` directory (89 files, reference copy of .claude)
+- Created `.planning/GSD_PATTERNS.md` (647 lines, comprehensive pattern analysis)
+- Identified 8 core GSD patterns with rationale
+- Created phase-specific integration roadmap for Phases 1-4
+- Made key decisions: XML structure, conservative token budgets (20/40/50%), checkpoint thinking
+
+**Reference:** [Quick Task 001](.planning/quick/001-duplicate-claude-to-gsd-reference-and-su/)
+
+### Phase 0.1: Integrate GSD Patterns (INSERTED)
+**Goal**: Reflect Quick 001 findings into planning docs - ensure decisions and patterns are properly integrated before Phase 1 execution
+**Depends on**: Phase 0
+**Requirements**: None (integration work)
+**Success Criteria** (what must be TRUE):
+  1. Key decisions from GSD_PATTERNS.md reflected in PROJECT.md Key Decisions table
+  2. Phase 1-4 details updated with GSD pattern applications from integration roadmap
+  3. REQUIREMENTS.md updated if GSD patterns suggest new requirements
+  4. Directory structure decisions (`.project/sessions/`) documented
+
+**Plans:** 1 plan
+
+Plans:
+- [ ] 00.1-01-PLAN.md — Integrate GSD pattern findings into PROJECT.md, ROADMAP.md, and REQUIREMENTS.md
 
 ### Phase 1: Foundation & Templates
 **Goal**: Establish file-based protocol and heavily-commented template approach that works across all agent types
@@ -27,7 +59,6 @@ Decimal phases appear between their surrounding integers in numeric order.
   1. Templates have inline explanations of GSD mechanics (why artifacts exist, how they work)
   2. File-based protocol works via both MCP and copy/paste without modification
   3. User can read any template and understand both what to do and why
-**Plans**: TBD
 
 Plans:
 - TBD (to be defined during phase planning)
@@ -42,7 +73,6 @@ Plans:
   3. User can export session working memory to TickTick for GTD processing
   4. User can import clarified loops from GTD back into future sessions
   5. User can track token budget (what's loaded, what's excluded, why)
-**Plans**: TBD
 
 Plans:
 - TBD (to be defined during phase planning)
@@ -57,7 +87,6 @@ Plans:
   3. User can start narrow and expand context progressively when needed
   4. User can document context decisions (why this scope? what was excluded?)
   5. User can navigate large codebases using dbt-mp and similar AEOps patterns
-**Plans**: TBD
 
 Plans:
 - TBD (to be defined during phase planning)
@@ -71,7 +100,6 @@ Plans:
   2. 30-minute onboarding guide enables colleague to do and understand
   3. Patterns validated on real dbt refactoring (200+ model lineage scenario)
   4. User can produce PR narrative with reasoning, not just code changes
-**Plans**: TBD
 
 Plans:
 - TBD (to be defined during phase planning)
@@ -79,10 +107,12 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 → 2 → 3 → 4
+Phases execute in numeric order: 0 → 0.1 → 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
+| 0. GSD Pattern Analysis | N/A | Completed (Quick 001) | 2026-01-20 |
+| 0.1. Integrate GSD Patterns (INSERTED) | 0/1 | Not started | - |
 | 1. Foundation & Templates | 0/TBD | Not started | - |
 | 2. Session Handoff System | 0/TBD | Not started | - |
 | 3. Context Engineering Patterns | 0/TBD | Not started | - |
@@ -90,4 +120,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 ---
 *Roadmap created: 2026-01-19*
-*Last updated: 2026-01-19*
+*Last updated: 2026-01-20*
