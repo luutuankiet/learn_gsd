@@ -66,12 +66,30 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
+| META-01 | Phase 1 | Pending |
+| META-02 | Phase 1 | Pending |
+| HANDOFF-01 | Phase 2 | Pending |
+| HANDOFF-02 | Phase 2 | Pending |
+| HANDOFF-03 | Phase 2 | Pending |
+| HANDOFF-04 | Phase 2 | Pending |
+| HANDOFF-05 | Phase 2 | Pending |
+| HANDOFF-06 | Phase 2 | Pending |
+| CONTEXT-01 | Phase 3 | Pending |
+| CONTEXT-02 | Phase 3 | Pending |
+| CONTEXT-03 | Phase 3 | Pending |
+| CONTEXT-04 | Phase 3 | Pending |
+| CONTEXT-05 | Phase 3 | Pending |
+| CONTEXT-06 | Phase 3 | Pending |
+| EDUC-01 | Phase 4 | Pending |
+| EDUC-02 | Phase 4 | Pending |
+| EDUC-03 | Phase 4 | Pending |
+| META-03 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 18 total
-- Mapped to phases: 0 (pending roadmap creation)
-- Unmapped: 18 ⚠️
+- Mapped to phases: 18/18 ✓
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-19*
-*Last updated: 2026-01-19 after initial definition*
+*Last updated: 2026-01-19 after roadmap creation*
