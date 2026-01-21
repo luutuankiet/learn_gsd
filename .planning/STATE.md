@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Templates)
-Plan: 2 of 4 complete
+Plan: 3 of 4 complete
 Status: In progress
-Last activity: 2026-01-21 — Completed 01-02-PLAN.md (Session Templates)
+Last activity: 2026-01-21 — Completed 01-03-PLAN.md (Protocol Reference & Agent Configuration)
 
-Progress: [████░░░░░░] 40% (2 plans complete)
+Progress: [██████░░░░] 60% (3 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 2
-- Average duration: 7 min
-- Total execution time: 0.23 hours
+- Total plans completed: 3
+- Average duration: 6 min
+- Total execution time: 0.30 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation & Templates | 2 | 14 min | 7 min |
+| 1. Foundation & Templates | 3 | 18 min | 6 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min), 01-02 (8 min)
-- Trend: Consistent velocity (6-8 min per plan)
+- Last 5 plans: 01-01 (6 min), 01-02 (8 min), 01-03 (4 min)
+- Trend: Improving velocity (4-8 min per plan)
 
 *Updated after each plan completion*
 
@@ -59,6 +59,10 @@ Recent decisions affecting current work:
 - Dual workflow support (01-02): All templates provide MCP and copy-paste instructions (vendor agnostic)
 - GTD export mapping (01-02): Closed loops → achievements, Open → next actions, Clarifying → waiting for
 - Template educational style (01-02): Inline comments throughout, not dumped at end
+- Protocol reference pattern (01-03): Separate quick-lookup doc consolidating enforcement mechanisms from all templates
+- AGENTS.md standard adoption (01-03): Follow agents.md format for cross-platform compatibility
+- Checkpoint categorization (01-03): Split into informational (progress) vs blocking (requires action)
+- Sticky note inclusion rules (01-03): Include when artifact/state/actions changed, omit for pure conversation
 
 ### Pending Todos
 
@@ -77,7 +81,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 01-02-PLAN.md (Session Templates: BOOTLOADER, SUMMARY, README)
+Stopped at: Completed 01-03-PLAN.md (Protocol Reference & Agent Configuration)
 Resume file: None
 
 ---
