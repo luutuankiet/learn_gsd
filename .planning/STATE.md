@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 Phase: 1 of 4 (Foundation & Templates)
-Plan: 1 of 4 complete
+Plan: 2 of 4 complete
 Status: In progress
-Last activity: 2026-01-21 — Completed 01-01-PLAN.md (Core Templates)
+Last activity: 2026-01-21 — Completed 01-02-PLAN.md (Session Templates)
 
-Progress: [██░░░░░░░░] 20% (1 plan complete)
+Progress: [████░░░░░░] 40% (2 plans complete)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 6 min
-- Total execution time: 0.1 hours
+- Total plans completed: 2
+- Average duration: 7 min
+- Total execution time: 0.23 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1. Foundation & Templates | 1 | 6 min | 6 min |
+| 1. Foundation & Templates | 2 | 14 min | 7 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-01 (6 min)
-- Trend: First plan completed
+- Last 5 plans: 01-01 (6 min), 01-02 (8 min)
+- Trend: Consistent velocity (6-8 min per plan)
 
 *Updated after each plan completion*
 
@@ -55,6 +55,10 @@ Recent decisions affecting current work:
 - Token budget thresholds (01-01): 0-20% comfortable, 20-40% deliberate, 40-50% warning, 50%+ stop
 - Progressive loading strategy (01-01): Start narrow, expand deliberately, exclude proactively
 - Context stack depth limit (01-01): Single level only to prevent cognitive overload
+- Sticky note frequency (01-02): Include when artifact updated OR actions changed, omit when nothing changed
+- Dual workflow support (01-02): All templates provide MCP and copy-paste instructions (vendor agnostic)
+- GTD export mapping (01-02): Closed loops → achievements, Open → next actions, Clarifying → waiting for
+- Template educational style (01-02): Inline comments throughout, not dumped at end
 
 ### Pending Todos
 
@@ -73,7 +77,7 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-21
-Stopped at: Completed 01-01-PLAN.md (Core Templates: LOOPS, CONTEXT, STATE)
+Stopped at: Completed 01-02-PLAN.md (Session Templates: BOOTLOADER, SUMMARY, README)
 Resume file: None
 
 ---
