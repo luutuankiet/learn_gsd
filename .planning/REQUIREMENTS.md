@@ -31,8 +31,8 @@
 
 ### Meta
 
-- [ ] **META-01**: All templates heavily commented to teach through use
-- [ ] **META-02**: File-based protocol works via MCP or copy/paste
+- [x] **META-01**: All templates heavily commented to teach through use
+- [x] **META-02**: File-based protocol works via MCP or copy/paste
 - [ ] **META-03**: Validate patterns on real dbt refactoring work
 
 ## v2 Requirements
@@ -66,8 +66,8 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| META-01 | Phase 1 | Pending |
-| META-02 | Phase 1 | Pending |
+| META-01 | Phase 1 | Complete |
+| META-02 | Phase 1 | Complete |
 | HANDOFF-01 | Phase 2 | Pending |
 | HANDOFF-02 | Phase 2 | Pending |
 | HANDOFF-03 | Phase 2 | Pending |
