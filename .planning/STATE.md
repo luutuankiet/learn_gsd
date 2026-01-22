@@ -9,12 +9,12 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 
 ## Current Position
 
-Phase: 1 of 4 (Foundation & Templates)
-Plan: 4 of 4 complete
-Status: Phase complete, verified (21/21 must-haves passed)
-Last activity: 2026-01-22 — Phase 1 verified and complete, all templates production-ready
+Phase: 1.1 of 6 (Allow Flexible Token Budget)
+Plan: 0 of TBD
+Status: Phase inserted, not yet planned
+Last activity: 2026-01-22 — Phase 1.1 inserted as urgent work after Phase 1 completion
 
-Progress: [███░░░░░░░] 30% (Phase 0 + Phase 1 complete, Phase 0.1 skipped)
+Progress: [███░░░░░░░] 30% (Phase 0 + Phase 1 complete, Phase 0.1 skipped, Phase 1.1 pending)
 
 ## Performance Metrics
 
@@ -41,6 +41,8 @@ Progress: [███░░░░░░░] 30% (Phase 0 + Phase 1 complete, Phas
 
 - Phase 0 added retroactively: GSD Pattern Analysis (completed via Quick 001)
 - Phase 0.1 inserted after Phase 0: Integrate GSD Patterns (URGENT) - reflect Quick 001 findings into planning docs before Phase 1
+- Phase 1.1 inserted after Phase 1: Allow Flexible Token Budget (URGENT) - handle token budget flexibility discovered after Phase 1 completion
+- Phase 1.2 inserted after Phase 1: Audit and fix template coherence for single-agent sessions (URGENT) - user found confusion when reading templates, must fix before Phase 2 uses them
 
 ### Decisions
 
@@ -92,4 +94,4 @@ Resume file: None
 
 ---
 *State initialized: 2026-01-19*
-*Last updated: 2026-01-22*
+*Last updated: 2026-01-22 (Phase 1.2 inserted)*
