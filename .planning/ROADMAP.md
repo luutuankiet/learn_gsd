@@ -14,7 +14,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 
 - [x] **Phase 0: GSD Pattern Analysis** - Reference setup (completed via Quick 001)
 - [ ] **Phase 0.1: Integrate GSD Patterns** - Reflect Quick 001 findings into planning docs (INSERTED)
-- [ ] **Phase 1: Foundation & Templates** - File-based protocol and template structure
+- [x] **Phase 1: Foundation & Templates** - File-based protocol and template structure
+- [ ] **Phase 1.1: Allow Flexible Token Budget** - Handle token budget flexibility (INSERTED)
+- [ ] **Phase 1.2: Audit and Fix Template Coherence** - Fix template coherence for single-agent sessions (INSERTED)
 - [ ] **Phase 2: Session Handoff System** - Eliminate context reconstruction between sessions
 - [ ] **Phase 3: Context Engineering Patterns** - Token budget management and context optimization
 - [ ] **Phase 4: Educational Integration & Validation** - Teach through templates and validate on real work
@@ -68,6 +70,37 @@ Plans:
 - [x] 01-03-PLAN.md — Protocol Documentation (PROTOCOL_REFERENCE, AGENTS.md)
 - [x] 01-04-PLAN.md — Human Verification (templates clear and actionable)
 
+### Phase 1.1: Allow Flexible Token Budget (INSERTED)
+**Goal**: Handle token budget flexibility - urgent work discovered after Phase 1 completion
+**Depends on**: Phase 1
+**Requirements**: TBD (to be defined during planning)
+**Success Criteria** (what must be TRUE):
+  1. TBD (to be defined during planning)
+
+**Plans:** 0 plans
+
+Plans:
+- [ ] TBD (run /gsd:plan-phase 1.1 to break down)
+
+### Phase 1.2: Audit and Fix Template Coherence for Single-Agent Sessions (INSERTED)
+**Goal**: Refactor GSD-lite templates into 5-file structure optimized for single-agent sessions with weaker reasoning models
+**Depends on**: Phase 1
+**Requirements**: None (consolidation/refactor work)
+**Success Criteria** (what must be TRUE):
+  1. gsd_lite/ contains exactly 5 files: PROTOCOL.md, STATE.md, WORK.md, INBOX.md, HISTORY.md
+  2. PROTOCOL.md is self-contained and foolproof for weak agents
+  3. STATE.md template captures moderate depth for session resume
+  4. INBOX.md supports loop capture from both user and agent
+  5. No redundant files remain (README, INIT_PROMPT, BOOTLOADER consolidated or removed)
+  6. A human can read the protocol and understand the entire workflow
+
+**Plans:** 3 plans
+
+Plans:
+- [ ] 01.2-01-PLAN.md — Create PROTOCOL.md (single entrypoint with all behavioral rules)
+- [ ] 01.2-02-PLAN.md — Create supporting templates (STATE.md, WORK.md, INBOX.md, HISTORY.md)
+- [ ] 01.2-03-PLAN.md — Cleanup redundant files and human verification
+
 ### Phase 2: Session Handoff System
 **Goal**: Create ephemeral working memory system that exports to GTD and eliminates 15-30 min context reconstruction
 **Depends on**: Phase 1
@@ -112,17 +145,19 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 → 0.1 → 1 → 2 → 3 → 4
+Phases execute in numeric order: 0 → 0.1 → 1 → 1.1 → 1.2 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 0. GSD Pattern Analysis | N/A | Completed (Quick 001) | 2026-01-20 |
 | 0.1. Integrate GSD Patterns (INSERTED) | 0/1 | Not started | - |
 | 1. Foundation & Templates | 4/4 | Completed | 2026-01-22 |
+| 1.1. Allow Flexible Token Budget (INSERTED) | 0/TBD | Not started | - |
+| 1.2. Audit and Fix Template Coherence (INSERTED) | 0/3 | Planned | - |
 | 2. Session Handoff System | 0/TBD | Not started | - |
 | 3. Context Engineering Patterns | 0/TBD | Not started | - |
 | 4. Educational Integration & Validation | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-01-19*
-*Last updated: 2026-01-22*
+*Last updated: 2026-01-22 (Phase 1.2 planned - 3 plans in 2 waves)*
