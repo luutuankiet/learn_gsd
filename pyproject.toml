@@ -1,6 +1,6 @@
 [project]
 name = "gsd-lite"
-version = "0.1.0"
+version = "1.0.1"
 description = "A minimal protocol for Getting Things Done with AI agents"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -18,3 +18,9 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/gsd_lite"]
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+build_command = "echo 'Build handled by GitHub Action'"
