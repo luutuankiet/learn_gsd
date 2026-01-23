@@ -421,30 +421,33 @@ Loop until received a yes from user.
 
 During execution:
 
-1. **Log EVERY action to WORK.md** (verbose logging)
-2. **Capture loops immediately to INBOX.md** (no parking lot in chat)
-3. **Never expand scope mid-phase** - defer to INBOX
 
-### WORK.md Logging (with systematic IDs)
+1. **The Journalist Rule:** Don't just log data; tell the story of the build.
+2. **Rich Context for Key Wins:** When a Task is completed, a Bug is fixed, or a Key Decision is made, use a `### Milestone` header. Include specific **Evidence** (SQL queries, Code snippets, Error logs) to prove the fix.
+3. **Granular Logs for Steps:** For minor edits/commands, use standard bullet points.
+4. **Never expand scope mid-phase** - defer to INBOX.
 
-Every action gets logged with timestamp, systematic IDs, and context.
+### WORK.md Logging Standard
 
-**Example with systematic IDs:**
+**Milestone Entry (Rich Context):**
+Use this for "Big Wins" or complex fixes. This helps you write the final PR description.
 
 ```markdown
-### 2026-01-22 15:30 - TASK-001: Add user authentication
+### [2026-01-22] Milestone: Fixed Timestamp Collision
+**Observation:** Found 29k rows where valid_to < valid_from.
+**Evidence:**
+`SELECT count(*) FROM subs WHERE valid_to < valid_from` -> 29,063 rows.
+**Resolution:** Implemented deterministic staggering in `base_recharge_subscriptions.sql`.
+```
 
-**Action:** Created auth.ts file
-**Files:** src/auth.ts
-**Changes:**
-- Added generateToken function
-- Added validateToken function
-- Imported jose library for JWT
+**Standard Entry (Routine):**
+Use this for the daily grind.
 
-**Decisions:** DECISION-001 (Use JWT tokens for stateless auth)
-**Loops captured:** LOOP-001 (Token expiry strategy unclear)
-**Status:** In progress
-**Next:** TASK-002 (Create login endpoint)
+```markdown
+**[2026-01-22 15:45]** - TASK-002: Create auth.ts file
+- Result: Created file with generateToken function
+- Files modified: src/auth.ts
+- Status: In Progress
 ```
 
 ---

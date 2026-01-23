@@ -32,13 +32,18 @@ All tasks, decisions, loops get systematic IDs
 **[YYYY-MM-DD HH:MM]** - TASK-NNN: [Next action]
 ...
 
-### Example Entry
+### Example Entries
 
-**[2026-01-22 15:30]** - TASK-001: Create auth.ts file
-- Result: Successfully created authentication module
-- Files modified: src/auth.ts (new file, 150 lines)
-- Decision: DECISION-001 (Use JWT tokens for stateless auth)
-- Loop captured: LOOP-001 (Token expiry strategy unclear)
+### [2026-01-22 15:30] Milestone: Fixed Timestamp Collision
+**Observation:** Found 29k rows where valid_to < valid_from.
+**Evidence:**
+`SELECT count(*) FROM subs WHERE valid_to < valid_from` -> 29,063 rows.
+**Resolution:** Implemented deterministic staggering in `base_recharge_subscriptions.sql`.
+**Status:** TASK-001 Complete
+
+**[2026-01-22 15:45]** - TASK-002: Create auth.ts file
+- Result: Created file with generateToken function
+- Files modified: src/auth.ts
 - Status: In Progress
 
 ---
