@@ -320,9 +320,9 @@ Progress indicators appear at the bottom of sticky note block
 
 ```
 
-────────────────────────────────────────────────────────
+---
 📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
-────────────────────────────────────────────────────────
+---
 ```
 
 This checkpoint system ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
@@ -350,9 +350,9 @@ SELF-CHECK : agent has completed the following action
 - [ ] INBOX.md update
 - [ ] HISTORY.md update
 
-────────────────────────────────────────────────────────
+---
 📊 PROGRESS: n/a Phase not started
-────────────────────────────────────────────────────────
+---
 ```
 
 ### Available Actions Menu
@@ -393,9 +393,9 @@ SELF-CHECK : agent has completed the following action
 - [ ] INBOX.md update (no loops found)
 - [ ] HISTORY.md update (no promote workflow triggered)
 
-────────────────────────────────────────────────────────
+---
 📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
-────────────────────────────────────────────────────────
+---
 
 ```
 
@@ -419,9 +419,9 @@ When user verification or decision is required:
 **How to verify** OR **Options**:
 [Numbered steps for verification OR options with pros/cons]
 
-────────────────────────────────────────────────────────
+---
 → YOUR ACTION: [Explicit instruction - "Type 'approved'" or "Select 1, 2, or 3"]
-────────────────────────────────────────────────────────
+---
 ```
 
 **Use blocking checkpoints for:**
@@ -445,7 +445,7 @@ For progress updates and state changes that don't require immediate action:
 **Priority**: [High | Medium | Low]
 **Added to**: INBOX.md
 
-────────────────────────────────────────────────────────
+---
 ```
 
 **✅ DECISION Made**
@@ -458,7 +458,7 @@ For progress updates and state changes that don't require immediate action:
 **Impact**: [Affected components/tasks]
 **Recorded in**: STATE.md
 
-────────────────────────────────────────────────────────
+---
 ```
 
 **🏁 PHASE Complete**
@@ -471,7 +471,7 @@ For progress updates and state changes that don't require immediate action:
 **Tasks completed**: [N/N]
 **Promoted to**: [PR/doc/artifact]
 
-────────────────────────────────────────────────────────
+---
 ```
 
 **🧪 HYPOTHESIS Validated/Invalidated**
@@ -484,7 +484,7 @@ For progress updates and state changes that don't require immediate action:
 **Evidence**: [What was found]
 **Next action**: [What this means for plan]
 
-────────────────────────────────────────────────────────
+---
 ```
 
 **📋 PLAN Ready**
@@ -496,9 +496,9 @@ For progress updates and state changes that don't require immediate action:
 **Tasks**: [N tasks defined]
 **Review**: [Link to moodboard/plan]
 
-────────────────────────────────────────────────────────
+---
 → YOUR ACTION: Type "yes" to proceed or adjust scope
-────────────────────────────────────────────────────────
+---
 ```
 
 **✔️ TASK Complete**
@@ -511,7 +511,7 @@ For progress updates and state changes that don't require immediate action:
 **Logged in**: WORK.md
 **Next**: TASK-NNN ([Next task name])
 
-────────────────────────────────────────────────────────
+---
 ```
 
 #### Checkpoint Confirmation Format
