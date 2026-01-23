@@ -63,13 +63,13 @@ Phase 1 ──┬── Session 1 (Chat A) ──┬── TASK-001 (Task A) ✓
 
 ## File Guide
 
-| File        | Purpose               | When to Read        | When to Write                     |
-| ----------- | --------------------- | ------------------- | --------------------------------- |
-| PROTOCOL.md | Session entrypoint    | Always first        | Never (immutable)                 |
-| STATE.md    | Phase/task tracker    | Every session start | After EVERY turn                  |
-| WORK.md     | Verbose execution log | When resuming       | After EVERY turn during execution |
-| INBOX.md    | Loop capture          | When planning       | When user OR agent discovers loop |
-| HISTORY.md  | Completed phases      | For context         | After phase promotion             |
+| File        | Purpose               | When to Read        | When to Write                     | Write target        | Reference target (DO NOT WRITE TO THIS) |
+| ----------- | --------------------- | ------------------- | --------------------------------- | ------------------- | ------------------ |
+| PROTOCOL.md | Session entrypoint    | Always first        | Never (immutable)                 | n/a                 | gsd_lite/template/PROTOCOL.md                    |
+| STATE.md    | Phase/task tracker    | Every session start | After EVERY turn                  | gsd_lite/STATE.md   | gsd_lite/template/STATE.md                    |
+| WORK.md     | Verbose execution log | When resuming       | After EVERY turn during execution | gsd_lite/WORK.md    | gsd_lite/template/WORK.md                    |
+| INBOX.md    | Loop capture          | When planning       | When user OR agent discovers loop | gsd_lite/INBOX.md   | gsd_lite/template/INBOX.md                    |
+| HISTORY.md  | Completed phases      | For context         | After phase promotion             | gsd_lite/HISTORY.md | gsd_lite/template/HISTORY.md                    |
 
 **Artifact lifecycle clarification:**
 
@@ -317,7 +317,7 @@ Create new PHASE-002 after PHASE-001 completes
 
 ## Sticky Reminder
 
-**At the end of EVERY turn**, include this status block with systematic IDs.
+**At the end of EVERY turn**, include this status block with systematic IDs **without exception**.
 
 #### Progress Indicators
 
