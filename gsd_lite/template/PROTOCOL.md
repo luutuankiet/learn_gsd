@@ -4,13 +4,15 @@
 
 ## Session Start Checklist
 
-When starting ANY session:
+When starting ANY session, read the following files : 
 
-1. Read this PROTOCOL.md (you're doing it now)
-2. Read STATE.md (current phase, task, decisions)
-3. If resuming mid-task, also read WORK.md
+1. Template PROTOCOL.md (you're doing it now). 
+2. Immediately after reading this file, read all the following in **one function call** before continue to process user task :
+    1. Other files in Template directory : INBOX.md, HISTORY.md, PROTOCOL.md, STATE.md, WORK.md (to load the protocol template to your memory)
+    2. Read project (not in template dir) STATE.md (current phase, task, decisions)
+    3. If resuming mid-task, also read WORK.md (also not in tempalte dir)
 
-**Single-Read Constraint:** Your agent can only read files at the first turn. This protocol must give you everything you need to operate correctly throughout the session.
+The instructions above ensure you have everything you need to operate correctly throughout the session.
 
 ### Understanding "Resume Mid-Task" in Chat Apps
 
@@ -315,21 +317,20 @@ Create new PHASE-002 after PHASE-001 completes
 
 ## Sticky Reminder
 
-At the end of EVERY turn, include this status block with systematic IDs.
+**At the end of EVERY turn**, include this status block with systematic IDs.
 
-### When to Include Sticky Reminder
+#### Progress Indicators
 
-**Include sticky note when:**
+Progress indicators appear at the bottom of sticky note block
 
-- ✅ Artifact updated (STATE.md, WORK.md, INBOX.md, HISTORY.md modified)
-- ✅ State changed (phase transition, loop captured, checkpoint reached)
-- ✅ Available actions changed (new contextual actions available)
+```
 
-**Omit sticky note when:**
+────────────────────────────────────────────────────────
+📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
+────────────────────────────────────────────────────────
+```
 
-- ❌ No changes (pure conversational turn)
-- ❌ Same state and actions as previous turn
-- ❌ Just reading files without updates
+This checkpoint system ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
 
 ### Required Format
 
@@ -348,6 +349,15 @@ AVAILABLE ACTIONS:
 [Contextual actions if applicable]
 
 NEXT: [What agent expects from user]
+SELF-CHECK : agent has completed the following action
+- [ ] STATE.md update
+- [ ] WORK.md update
+- [ ] INBOX.md update
+- [ ] HISTORY.md update
+
+────────────────────────────────────────────────────────
+📊 PROGRESS: n/a Phase not started
+────────────────────────────────────────────────────────
 ```
 
 ### Available Actions Menu
@@ -382,6 +392,16 @@ AVAILABLE ACTIONS:
 Loop actions: /close-loop [ID] | /explore-loop [ID]
 
 NEXT: Finish login endpoint implementation
+SELF-CHECK : agent has completed the following action
+- [x] STATE.md update
+- [x] WORK.md update
+- [ ] INBOX.md update (no loops found)
+- [ ] HISTORY.md update (no promote workflow triggered)
+
+────────────────────────────────────────────────────────
+📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
+────────────────────────────────────────────────────────
+
 ```
 
 ### Checkpoint Emoji Banners
@@ -508,26 +528,6 @@ When a checkpoint is resolved, explicitly confirm the transition:
 ```
 
 This makes state changes visible and traceable.
-
-#### Progress Indicators
-
-Progress indicators appear OUTSIDE the sticky note block, at the very end of the response for maximum visibility:
-
-```
-[Your normal response with sticky reminder]
-
-────────────────────────────────────────────────────────
-📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
-────────────────────────────────────────────────────────
-```
-
-**Why at the end:**
-
-- Last thing user sees before replying
-- Doesn't clutter sticky reminder
-- Clear visual separation from status details
-
-This checkpoint system ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
 
 ---
 

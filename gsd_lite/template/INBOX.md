@@ -23,7 +23,7 @@ Loops come from TWO sources:
 
 | ID | Date | Loop | Source | Status |
 |----|------|------|--------|--------|
-| LOOP-001 | YYYY-MM-DD | [Question/concern] | During TASK-NNN | Open |
+| LOOP-001 | 2026-01-23 | Client Update Workflow (Pulling updates) | During Planning | Open |
 
 ## From Agent
 
