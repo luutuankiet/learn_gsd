@@ -370,7 +370,11 @@ NEXT: Finish login endpoint implementation
 
 ### Checkpoint Emoji Banners
 
-When blocking checkpoints occur (user verification required):
+Checkpoints use distinct emoji banners for different event types. All checkpoints receive the same visual treatment (7+ emojis) to arrest attention.
+
+#### Blocking Checkpoints
+
+When user verification or decision is required:
 
 **Format:**
 ```
@@ -388,15 +392,117 @@ When blocking checkpoints occur (user verification required):
 ────────────────────────────────────────────────────────
 ```
 
-**Why aggressive emoji wall:** 7+ 🛑 emojis arrest scrolling attention, make it impossible to miss the blocking point.
-
 **Use blocking checkpoints for:**
 - User needs to verify visual output (dashboard layout, UI behavior)
 - User needs to make architectural decision (library choice, data model)
 - User needs to provide credentials (authentication gates)
 - User needs to test functionality (manual testing required)
 
-This sticky reminder ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
+#### Informational Checkpoints
+
+For progress updates and state changes that don't require immediate action:
+
+**🔄 LOOP Captured**
+```
+🔄🔄🔄🔄🔄🔄🔄 LOOP-NNN CAPTURED 🔄🔄🔄🔄🔄🔄🔄
+
+**Loop**: [Brief description]
+**Source**: [User | Agent]
+**Priority**: [High | Medium | Low]
+**Added to**: INBOX.md
+
+────────────────────────────────────────────────────────
+```
+
+**✅ DECISION Made**
+```
+✅✅✅✅✅✅✅ DECISION-NNN MADE ✅✅✅✅✅✅✅
+
+**Decision**: [What was decided]
+**Rationale**: [Why this choice]
+**Impact**: [Affected components/tasks]
+**Recorded in**: STATE.md
+
+────────────────────────────────────────────────────────
+```
+
+**🏁 PHASE Complete**
+```
+🏁🏁🏁🏁🏁🏁🏁 PHASE-NNN COMPLETE 🏁🏁🏁🏁🏁🏁🏁
+
+**Phase**: [Phase name]
+**Outcome**: [One sentence summary]
+**Tasks completed**: [N/N]
+**Promoted to**: [PR/doc/artifact]
+
+────────────────────────────────────────────────────────
+```
+
+**🧪 HYPOTHESIS Validated/Invalidated**
+```
+🧪🧪🧪🧪🧪🧪🧪 HYPOTHESIS VALIDATED/INVALIDATED 🧪🧪🧪🧪🧪🧪🧪
+
+**Hypothesis**: [What was tested]
+**Result**: [Validated | Invalidated]
+**Evidence**: [What was found]
+**Next action**: [What this means for plan]
+
+────────────────────────────────────────────────────────
+```
+
+**📋 PLAN Ready**
+```
+📋📋📋📋📋📋📋 PLAN READY 📋📋📋📋📋📋📋
+
+**Phase**: PHASE-NNN
+**Tasks**: [N tasks defined]
+**Review**: [Link to moodboard/plan]
+
+────────────────────────────────────────────────────────
+→ YOUR ACTION: Type "yes" to proceed or adjust scope
+────────────────────────────────────────────────────────
+```
+
+**✔️ TASK Complete**
+```
+✔️✔️✔️✔️✔️✔️✔️ TASK-NNN COMPLETE ✔️✔️✔️✔️✔️✔️✔️
+
+**Task**: [Task name]
+**Files changed**: [Key files]
+**Logged in**: WORK.md
+**Next**: TASK-NNN ([Next task name])
+
+────────────────────────────────────────────────────────
+```
+
+#### Checkpoint Confirmation Format
+
+When a checkpoint is resolved, explicitly confirm the transition:
+
+```
+✅ LOOP-007 resolved → DECISION-008 created
+```
+
+This makes state changes visible and traceable.
+
+#### Progress Indicators
+
+Progress indicators appear OUTSIDE the sticky note block, at the very end of the response for maximum visibility:
+
+```
+[Your normal response with sticky reminder]
+
+────────────────────────────────────────────────────────
+📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
+────────────────────────────────────────────────────────
+```
+
+**Why at the end:**
+- Last thing user sees before replying
+- Doesn't clutter sticky reminder
+- Clear visual separation from status details
+
+This checkpoint system ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
 
 ---
 
