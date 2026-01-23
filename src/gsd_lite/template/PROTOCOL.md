@@ -270,11 +270,12 @@ User mentions "frustrated with current tools"
    - options: 2-3 concrete choices (AskUserQuestion adds "Other" automatically)
    - Include "You decide" as an option when reasonable — captures your discretion
 
-The format is important - put it under fenced code block ```question like example below with this specific 10x emoji banner
+The format is important - use example below with this specific 10x emoji banner
 
 Example MOODBOARD
 
-```question
+<example>
+```
 📫📫📫📫📫📫📫 QUESTION 📫📫📫📫📫📫📫
 
 🎯🎯🎯 Topic : Defining "Low Effort" Data Entry 🎯🎯🎯
@@ -308,6 +309,8 @@ D. **Let me explain:** ____________________
 
 ```
 
+</example>
+
 </question_guideline_and_format>
 
 <context_checklist>
@@ -325,10 +328,11 @@ Four things. If they volunteer more, capture it.
 
 <decision_gate>
 
-When you could write a clear plan, offer to proceed to WHITEBOARD where you propose the plan. Use the fenced block ```decision below : 
+When you could write a clear plan, offer to proceed to WHITEBOARD where you propose the plan.
 
+<format> </format>
 
-```decision
+```md
 🔮🔮🔮🔮🔮🔮🔮🔮🔮🔮 READY TO SEE THE PLAN? 🔮🔮🔮🔮🔮🔮🔮🔮🔮🔮
 
 - question: "I think I understand what you're after. Ready to see the plan I devised"
@@ -337,6 +341,9 @@ When you could write a clear plan, offer to proceed to WHITEBOARD where you prop
   - "Keep exploring" — I want to share more / ask me more
 
 ```
+
+</format>
+
 
 If "Keep exploring" — ask what they want to add or identify gaps and probe naturally.
 
@@ -361,8 +368,9 @@ Loop until received a yes from user.
 
 ### WHITEBOARD Format (with systematic IDs)
 
+<format>
 
-```
+```md
 📚📚📚📚📚📚📚📚📚📚 PHASE-NNN WHITEBOARD 📚📚📚📚📚📚📚📚📚📚
 
 **PHASE-NNN: [Phase Name]**
@@ -382,9 +390,11 @@ Loop until received a yes from user.
 👉 YOUR TURN: Type "yes" to proceed or adjust scope
 ```
 
+</format>
+
 **Example with systematic IDs:**
 
-```
+```md
 📚📚📚📚📚📚📚📚📚📚 PHASE-001 WHITEBOARD 📚📚📚📚📚📚📚📚📚📚
 
 **PHASE-001: Add User Authentication**
