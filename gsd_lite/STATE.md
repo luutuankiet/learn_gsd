@@ -3,18 +3,19 @@
 <!--
 This file answers: "Where were we?"
 Read this at session start to understand current position.
-Update after decisions, task changes, or session end.
+Update after EVERY turn (agent response).
 -->
 
 ## Active Phase
 
-**Phase:** [Number] - [Name]
+**Phase:** PHASE-NNN - [Name]
 **Goal:** [One sentence]
 **Status:** Planning | Executing | Blocked | Complete
+**Progress:** [X/Y tasks complete]
 
 ## Current Task
 
-**Task:** [Name]
+**Task:** TASK-NNN - [Name]
 **Status:** Not Started | In Progress | Blocked | Done
 **Blocked By:** [If blocked, what's stopping progress]
 
@@ -22,12 +23,12 @@ Update after decisions, task changes, or session end.
 
 <!--
 Decisions logged here so agent doesn't re-ask same questions.
-Format: Date - Decision summary - Why
+All decisions get unique ID: DECISION-NNN
 -->
 
-| Date | Decision | Why |
-|------|----------|-----|
-| YYYY-MM-DD | [Decision] | [Rationale] |
+| ID | Date | Decision | Why |
+|----|------|----------|-----|
+| DECISION-001 | YYYY-MM-DD | [Decision] | [Rationale] |
 
 ## Session Log
 
@@ -42,5 +43,18 @@ Format: Date - Decision summary - Why
 See INBOX.md for full list.
 Currently: [N] loops pending review
 
+**Quick references:**
+- LOOP-001: [Brief description]
+- LOOP-002: [Brief description]
+
+## ID Registry
+
+<!--
+Track next available ID for each type.
+IDs are globally unique and never reused.
+-->
+
+**Next IDs:** PHASE-NNN, TASK-NNN, LOOP-NNN, DECISION-NNN
+
 ---
-*Last Updated: YYYY-MM-DD*
+*Last Updated: YYYY-MM-DD HH:MM*

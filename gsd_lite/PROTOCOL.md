@@ -11,6 +11,46 @@ When starting ANY session:
 
 **Single-Read Constraint:** Your agent can only read files at the first turn. This protocol must give you everything you need to operate correctly throughout the session.
 
+### Understanding "Resume Mid-Task" in Chat Apps
+
+**Scenario 1: Linear Session (same chat thread)**
+
+Monday Session 1 (new chat):
+- Do Task A, Task B
+- Artifacts updated after each turn
+- User says "let's continue tomorrow"
+- This is NOT "resume mid-task" - just pausing linear session
+
+Tuesday continuation (SAME chat):
+- User says "let's continue"
+- Agent has full chat history, just continues from last turn
+- This is NOT "resume mid-task" - linear continuation
+
+**Scenario 2: Resume Mid-Task (NEW chat thread)**
+
+Tuesday Session 2 (NEW chat):
+- User opens fresh chat, says "resume task B"
+- Agent reads PROTOCOL.md + STATE.md + WORK.md
+- STATE.md shows: "Current Task: TASK-002 (Task B) - In Progress"
+- WORK.md shows: Latest log entry for Task B progress
+- Agent reconstructs context from artifacts → THIS is "resume mid-task"
+
+**Key insight:** "Resume mid-task" = starting NEW chat session with in-progress task state in artifacts.
+
+**Session hierarchy example:**
+```
+Phase 1 ──┬── Session 1 (Chat A) ──┬── TASK-001 (Task A) ✓
+          │                         └── TASK-002 (Task B) [partial]
+          ├── Session 2 (Chat B) ──┬── TASK-002 (Task B continued) ✓
+          │                         └── TASK-003 (Task C) ✓
+          └── Session 3 (Chat C) ──── TASK-004 (Task D) ✓
+```
+
+**Artifact update timing:**
+- STATE.md and WORK.md: Updated after EVERY turn (agent's response)
+- User never manually updates - agent writes after each response
+- At session wrap-up: Agent updates STATE.md with session end marker
+
 ---
 
 ## File Guide
@@ -18,10 +58,77 @@ When starting ANY session:
 | File | Purpose | When to Read | When to Write |
 |------|---------|--------------|---------------|
 | PROTOCOL.md | Session entrypoint | Always first | Never (immutable) |
-| STATE.md | Phase/task tracker | Every session start | After decisions, phase changes |
-| WORK.md | Verbose execution log | When resuming | Every action during execution |
+| STATE.md | Phase/task tracker | Every session start | After EVERY turn |
+| WORK.md | Verbose execution log | When resuming | After EVERY turn during execution |
 | INBOX.md | Loop capture | When planning | When user OR agent discovers loop |
 | HISTORY.md | Completed phases | For context | After phase promotion |
+
+**Artifact lifecycle clarification:**
+- STATE.md and WORK.md are updated frequently (after every agent response)
+- This ensures artifacts are always current when new session starts
+- No risk of "forgetting" - protocol enforces update every turn via sticky reminder
+
+---
+
+## Systematic ID Format
+
+**ALL items get unique IDs in TYPE-NNN format** (zero-padded, globally unique).
+
+### ID Types
+
+| Type | Examples | Scope | Used In |
+|------|----------|-------|---------|
+| PHASE-NNN | PHASE-001, PHASE-002 | Phases in project | STATE.md, HISTORY.md |
+| TASK-NNN | TASK-001, TASK-003 | Tasks within phases | STATE.md, WORK.md |
+| LOOP-NNN | LOOP-007, LOOP-012 | Open questions/loops | INBOX.md, STATE.md |
+| DECISION-NNN | DECISION-008, DECISION-015 | Key decisions made | STATE.md |
+
+### Why Systematic IDs
+
+1. **Quick lookup:** User can prompt "discuss LOOP-007" or "continue TASK-003"
+2. **Greppable:** `grep LOOP-007 *` finds all references across artifacts
+3. **Unambiguous:** No confusion about which item being referenced
+4. **Global unique:** IDs never repeat, even after resolution
+
+### ID Assignment Rules
+
+- **Sequential numbering:** Increment by 1 for each new item
+- **Zero-padded:** Always three digits (001, 002, 003, ...)
+- **Never reuse:** Once assigned, ID is permanent (even after item closed)
+- **Registry:** STATE.md tracks current counters for each type
+
+### Example References
+
+**In STATE.md:**
+```markdown
+## Current Task
+**Task:** TASK-003 - Add user authentication
+**Status:** In Progress
+
+## Key Decisions Made
+| ID | Date | Decision | Why |
+|----|------|----------|-----|
+| DECISION-001 | 2026-01-22 | Use JWT tokens | Stateless auth preferred |
+```
+
+**In INBOX.md:**
+```markdown
+## From User
+| ID | Date | Loop | Status |
+|----|------|------|--------|
+| LOOP-001 | 2026-01-22 | Password reset flow | Open |
+```
+
+**In WORK.md:**
+```markdown
+**[2026-01-22 15:30]** - TASK-003: Create auth.ts
+- Captured LOOP-002: Token expiry strategy unclear
+```
+
+**In user prompts:**
+- "What's the status of LOOP-007?"
+- "Resume TASK-003"
+- "Why did we make DECISION-008?"
 
 ---
 
@@ -57,16 +164,18 @@ These are non-negotiable principles from the GSD-Lite manifesto:
    - Never proceed to execution without "yes" or equivalent
    - Adjust based on user feedback
 
-### Moodboard Format
+### Moodboard Format (with systematic IDs)
 
 ```
-🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE-NNN MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+
+PHASE-NNN: [Phase Name]
 
 ┌─────────────────────────────────────────┐
 │ 📦 SCOPE                                │
-│ • Task 1: [description]                 │
-│ • Task 2: [description]                 │
-│ • Task 3: [description]                 │
+│ • TASK-NNN: [description]               │
+│ • TASK-NNN: [description]               │
+│ • TASK-NNN: [description]               │
 └─────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────┐
@@ -83,16 +192,18 @@ These are non-negotiable principles from the GSD-Lite manifesto:
 👉 YOUR TURN: Type "yes" to proceed or adjust scope
 ```
 
-**Example:**
+**Example with systematic IDs:**
 
 ```
-🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE-001 MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
+
+PHASE-001: Add User Authentication
 
 ┌─────────────────────────────────────────┐
 │ 📦 SCOPE                                │
-│ • Task 1: Add user authentication       │
-│ • Task 2: Create login endpoint         │
-│ • Task 3: Add JWT token generation      │
+│ • TASK-001: Add user authentication     │
+│ • TASK-002: Create login endpoint       │
+│ • TASK-003: Add JWT token generation    │
 └─────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────┐
@@ -120,14 +231,14 @@ During execution:
 2. **Capture loops immediately to INBOX.md** (no parking lot in chat)
 3. **Never expand scope mid-phase** - defer to INBOX
 
-### WORK.md Logging
+### WORK.md Logging (with systematic IDs)
 
-Every action gets logged with timestamp and context.
+Every action gets logged with timestamp, systematic IDs, and context.
 
-**Example:**
+**Example with systematic IDs:**
 
 ```markdown
-### 2026-01-22 15:30 - Task 1: Add user authentication
+### 2026-01-22 15:30 - TASK-001: Add user authentication
 
 **Action:** Created auth.ts file
 **Files:** src/auth.ts
@@ -136,8 +247,10 @@ Every action gets logged with timestamp and context.
 - Added validateToken function
 - Imported jose library for JWT
 
+**Decisions:** DECISION-001 (Use JWT tokens for stateless auth)
+**Loops captured:** LOOP-001 (Token expiry strategy unclear)
 **Status:** In progress
-**Next:** Create login endpoint
+**Next:** TASK-002 (Create login endpoint)
 ```
 
 ---
@@ -151,14 +264,15 @@ Loops come from TWO sources:
 
 Both get captured immediately to INBOX.md.
 
-### INBOX.md Format
+### INBOX.md Format (with systematic IDs)
 
 ```markdown
-## Loop: [Brief Description]
+## LOOP-NNN: [Brief Description]
 **Source:** [User | Agent]
 **Captured:** [Date]
 **Context:** [Why this matters]
 **Priority:** [High | Medium | Low]
+**Status:** Open | Clarifying | Closed
 
 ### Details
 [Full description of the loop/concern/future work]
@@ -167,48 +281,56 @@ Both get captured immediately to INBOX.md.
 [What needs to happen when this loop is addressed]
 ```
 
-**Example:**
+**Example with systematic ID:**
 
 ```markdown
-## Loop: Add password reset flow
+## LOOP-003: Add password reset flow
 **Source:** User
 **Captured:** 2026-01-22
-**Context:** User asked mid-task: "What about password reset?"
+**Context:** User asked mid-task during TASK-002: "What about password reset?"
 **Priority:** Medium
+**Status:** Open
 
 ### Details
 Need to add password reset functionality with email verification.
-Out of scope for current auth phase but important for production.
+Out of scope for PHASE-001 (current auth phase) but important for production.
 
 ### Next Action
-Create new phase after current auth phase completes
+Create new PHASE-002 after PHASE-001 completes
 ```
 
 ---
 
 ## Sticky Reminder
 
-At the end of EVERY turn, include this status block:
+At the end of EVERY turn, include this status block with systematic IDs:
 
 ```
 📌 CURRENT STATUS 📌
-Phase: [Phase name]
-Task: [Current task] - [Status: In progress / Blocked / Complete]
-Loops captured this turn: [Number, or "None"]
+Phase: PHASE-NNN ([Phase name]) - [X/Y tasks complete]
+Task: TASK-NNN ([Task name]) - [Status: In progress / Blocked / Complete]
+Loops captured this turn: [Number, or "None"] ([LOOP-NNN, LOOP-NNN])
+Decisions made this turn: [Number, or "None"] ([DECISION-NNN])
 Next action: [What happens next]
 ```
 
-**Example:**
+**Example with systematic IDs:**
 
 ```
 📌 CURRENT STATUS 📌
-Phase: Add User Authentication
-Task: Create login endpoint - In progress
-Loops captured this turn: 1 (password reset flow)
+Phase: PHASE-001 (Add User Authentication) - 1/3 tasks complete
+Task: TASK-002 (Create login endpoint) - In progress
+Loops captured this turn: 1 (LOOP-003: password reset flow)
+Decisions made this turn: 1 (DECISION-002: Use JWT tokens)
 Next action: Finish login endpoint implementation
 ```
 
-This sticky reminder ensures both agent and user maintain shared understanding of current state.
+**When to include sticky reminder:**
+- ALWAYS at end of every agent response
+- Shows current position with unambiguous IDs
+- User can reference IDs in next prompt ("discuss LOOP-003")
+
+This sticky reminder ensures both agent and user maintain shared understanding of current state with systematic IDs for quick lookup.
 
 ---
 
@@ -232,9 +354,84 @@ This sticky reminder ensures both agent and user maintain shared understanding o
 
 ---
 
+## Phase Definition and Completion
+
+### What is a Phase?
+
+A **phase** is a logical unit of work agreed upon between user and agent during planning mode.
+
+**Characteristics:**
+- Has clear goal (visible in moodboard)
+- Has defined scope (tasks in moodboard)
+- Has verification criteria (in moodboard)
+- Gets unique ID: PHASE-NNN
+
+**Example phases:**
+- PHASE-001: Add user authentication (3 tasks)
+- PHASE-002: Implement password reset flow (2 tasks)
+- PHASE-003: Add user profile page (4 tasks)
+
+### Phase Lifecycle
+
+```
+Planning → Moodboard → User confirms → Execution → User requests completion → Promotion
+```
+
+### Phase Completion Protocol
+
+**CRITICAL: Phase completion is USER-CONTROLLED, not agent-decided.**
+
+**Agent role:**
+- Execute tasks in scope
+- Update WORK.md after every turn
+- Show progress in sticky reminder
+- When all tasks done: Signal completion readiness
+
+**User role:**
+- Decide WHEN to complete phase (may want to review, test, adjust)
+- Explicitly request phase promotion: "complete this phase" or "promote phase"
+- User controls timing of WORK.md trimming (prevents permanent data loss)
+
+**Why user controls completion:**
+- Promotion workflow trims WORK.md (deletes verbose log)
+- If agent auto-promotes, material for distributed artifacts is FOREVER LOST
+- User may need time to extract outcomes, write PR description, review logs
+- Agent doesn't know if user wants to pause, review, or test before promotion
+
+**Phase completion signal from agent:**
+
+```
+✅✅✅ PHASE READY FOR COMPLETION ✅✅✅
+
+All tasks in scope complete:
+✓ TASK-001: Add user authentication
+✓ TASK-002: Create login endpoint
+✓ TASK-003: Add JWT token generation
+
+WORK.md contains full execution log (ready for promotion).
+
+👉 YOUR TURN: Type "complete phase" to promote, or continue working
+```
+
+**User then decides:** "complete phase" (triggers promotion) OR "let's add one more thing" (continues execution)
+
+### Sticky Note with Phase Progress
+
+Every sticky reminder shows phase completion progress:
+
+```
+📌 CURRENT STATUS 📌
+Phase: PHASE-001 (Add User Authentication) - 2/3 tasks complete
+Task: TASK-003 (Add JWT token generation) - In progress
+Loops captured this turn: None
+Next action: Finish TASK-003, then signal phase ready
+```
+
+---
+
 ## Promotion Workflow
 
-When a phase completes:
+When USER requests phase completion:
 
 ### Step 1: Promote
 Extract key outcomes to external artifact:
@@ -243,20 +440,22 @@ Extract key outcomes to external artifact:
 - Create deployment notes
 
 ### Step 2: Record to HISTORY.md
-Add one-line entry with completion date and outcome.
+Add one-line entry with systematic ID, completion date, and outcome.
 
-**HISTORY.md Format:**
+**HISTORY.md Format (with systematic IDs):**
 
 ```markdown
-## [Date] - Phase: [Name]
+## PHASE-NNN: [Name]
+**Completed:** [Date]
 **Outcome:** [One sentence summary]
 **Artifact:** [Link to PR/doc/external artifact]
 ```
 
-**Example:**
+**Example with systematic ID:**
 
 ```markdown
-## 2026-01-22 - Phase: Add User Authentication
+## PHASE-001: Add User Authentication
+**Completed:** 2026-01-22
 **Outcome:** JWT-based authentication with login/logout endpoints
 **Artifact:** PR #42 (merged)
 ```
@@ -269,16 +468,19 @@ Delete entire content of WORK.md.
 ### Step 4: Clear STATE.md
 Update STATE.md to show no active phase. Ready for next phase.
 
-**STATE.md After Promotion:**
+**STATE.md After Promotion (with systematic IDs):**
 
 ```markdown
 ## Active Phase
 None - Awaiting next phase planning
 
 ## Last Completed
-Phase: Add User Authentication
+Phase: PHASE-001 (Add User Authentication)
 Completed: 2026-01-22
 Outcome: JWT-based auth (PR #42)
+
+## ID Registry
+**Next IDs:** PHASE-002, TASK-004, LOOP-005, DECISION-003
 ```
 
 ---
