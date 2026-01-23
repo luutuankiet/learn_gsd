@@ -10,29 +10,29 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 Phase: 1.2 of 6 (Audit and Fix Template Coherence for Single-Agent Sessions)
-Plan: 2 of 3 (01.2-01 and 01.2-02 complete, 01.2-03 pending)
-Status: In progress
-Last activity: 2026-01-22 — Completed 01.2-01-PLAN.md (PROTOCOL.md entrypoint)
+Plan: 3 of 3 (Phase 1.2 complete)
+Status: Phase complete
+Last activity: 2026-01-23 — Completed 01.2-03-PLAN.md (cleanup and verification)
 
-Progress: [███░░░░░░░] 30% (Phase 0 + Phase 1 complete, Phase 0.1 skipped, Phase 1.1 pending, Phase 1.2 in progress)
+Progress: [███░░░░░░░] 33% (Phase 0 + Phase 1 + Phase 1.2 complete, Phase 0.1 skipped, Phase 1.1 pending)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 4.3 min
-- Total execution time: 0.43 hours
+- Total plans completed: 7
+- Average duration: 4.0 min
+- Total execution time: 0.47 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1. Foundation & Templates | 4 | 22 min | 5.5 min |
-| 1.2 Audit & Fix Template Coherence | 2 | 4 min | 2 min |
+| 1.2 Audit & Fix Template Coherence | 3 | 7 min | 2.3 min |
 
 **Recent Trend:**
-- Last 5 plans: 01-03 (4 min), 01-04 (4 min), 01.2-02 (2 min), 01.2-01 (2 min)
-- Trend: Excellent velocity (2-4 min per plan, averaging 4.3 min)
+- Last 5 plans: 01-04 (4 min), 01.2-02 (2 min), 01.2-01 (2 min), 01.2-03 (3 min)
+- Trend: Excellent velocity (2-4 min per plan, averaging 4.0 min)
 
 *Updated after each plan completion*
 
@@ -80,6 +80,10 @@ Recent decisions affecting current work:
 - WORK.md ephemeral pattern (01.2-02): Explicitly marked as deleted after phase promotion
 - INBOX.md dual sources (01.2-02): Separate sections for user loops (non-linear) and agent loops (discovery)
 - HISTORY.md minimal format (01.2-02): One line per completed phase with external artifact links
+- Systematic IDs across artifacts (01.2-03): TYPE-NNN format (PHASE/TASK/LOOP/DECISION) with ID Registry in STATE.md
+- User-controlled phase completion (01.2-03): Agent signals readiness, user decides when to promote (prevents premature WORK.md trimming)
+- Artifact update timing (01.2-03): STATE.md and WORK.md updated after EVERY turn (not occasionally)
+- Sticky note checkpoint banners (01.2-03): 6 informational checkpoint types with distinct emojis, plus action menu
 
 ### Pending Todos
 
@@ -98,10 +102,10 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-01-22
-Stopped at: Completed 01.2-01-PLAN.md (PROTOCOL.md entrypoint)
+Last session: 2026-01-23
+Stopped at: Completed 01.2-03-PLAN.md (cleanup and verification - Phase 1.2 complete)
 Resume file: None
 
 ---
 *State initialized: 2026-01-19*
-*Last updated: 2026-01-22 (Completed 01.2-01)*
+*Last updated: 2026-01-23 (Completed 01.2-03)*
