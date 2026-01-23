@@ -45,12 +45,19 @@ Tuesday Session 2 (NEW chat):
 
 **Session hierarchy example:**
 
-```
-Phase 1 ──┬── Session 1 (Chat A) ──┬── TASK-001 (Task A) ✓
-          │                         └── TASK-002 (Task B) [partial]
-          ├── Session 2 (Chat B) ──┬── TASK-002 (Task B continued) ✓
-          │                         └── TASK-003 (Task C) ✓
-          └── Session 3 (Chat C) ──── TASK-004 (Task D) ✓
+```mermaid
+graph TD
+  P1[Phase 1] --> S1[Session 1 - Chat A]
+  P1 --> S2[Session 2 - Chat B]
+  P1 --> S3[Session 3 - Chat C]
+
+  S1 --> T1[TASK-001: Task A ✓]
+  S1 --> T2[TASK-002: Task B - partial]
+
+  S2 --> T2b[TASK-002: Task B continued ✓]
+  S2 --> T3[TASK-003: Task C ✓]
+
+  S3 --> T4[TASK-004: Task D ✓]
 ```
 
 **Artifact update timing:**
@@ -183,25 +190,19 @@ These are non-negotiable principles from the GSD-Lite manifesto:
 ```
 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE-NNN MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
 
-PHASE-NNN: [Phase Name]
+**PHASE-NNN: [Phase Name]**
 
-┌─────────────────────────────────────────┐
-│ 📦 SCOPE                                │
-│ • TASK-NNN: [description]               │
-│ • TASK-NNN: [description]               │
-│ • TASK-NNN: [description]               │
-└─────────────────────────────────────────┘
+**📦 SCOPE**
+* TASK-NNN: [description]
+* TASK-NNN: [description]
+* TASK-NNN: [description]
 
-┌─────────────────────────────────────────┐
-│ ⚠️  RISK                                 │
-│ • [Risk item 1]                         │
-│ • [Risk item 2]                         │
-└─────────────────────────────────────────┘
+**⚠️ RISK**
+* [Risk item 1]
+* [Risk item 2]
 
-┌─────────────────────────────────────────┐
-│ ✅ VERIFICATION                         │
-│ • [How to verify success]               │
-└─────────────────────────────────────────┘
+**✅ VERIFICATION**
+* [How to verify success]
 
 👉 YOUR TURN: Type "yes" to proceed or adjust scope
 ```
@@ -211,26 +212,20 @@ PHASE-NNN: [Phase Name]
 ```
 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯 PHASE-001 MOODBOARD 🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯
 
-PHASE-001: Add User Authentication
+**PHASE-001: Add User Authentication**
 
-┌─────────────────────────────────────────┐
-│ 📦 SCOPE                                │
-│ • TASK-001: Add user authentication     │
-│ • TASK-002: Create login endpoint       │
-│ • TASK-003: Add JWT token generation    │
-└─────────────────────────────────────────┘
+**📦 SCOPE**
+* TASK-001: Add user authentication
+* TASK-002: Create login endpoint
+* TASK-003: Add JWT token generation
 
-┌─────────────────────────────────────────┐
-│ ⚠️  RISK                                 │
-│ • Security: Token expiry strategy TBD   │
-│ • Breaking: Existing users need migrate │
-└─────────────────────────────────────────┘
+**⚠️ RISK**
+* Security: Token expiry strategy TBD
+* Breaking: Existing users need migrate
 
-┌─────────────────────────────────────────┐
-│ ✅ VERIFICATION                         │
-│ • Login with test user returns 200      │
-│ • Token validates correctly             │
-└─────────────────────────────────────────┘
+**✅ VERIFICATION**
+* Login with test user returns 200
+* Token validates correctly
 
 👉 YOUR TURN: Type "yes" to proceed or adjust scope
 ```
@@ -694,25 +689,12 @@ Outcome: JWT-based auth (PR #42)
 
 ## Artifact Lifecycle Summary
 
-```
-┌──────────────┐
-│  Planning    │ → Moodboard → User confirms
-└──────┬───────┘
-       │
-       ▼
-┌──────────────┐
-│  Execution   │ → Verbose WORK.md logging
-└──────┬───────┘       → Capture loops to INBOX.md
-       │
-       ▼
-┌──────────────┐
-│  Promotion   │ → Extract to PR/doc
-└──────┬───────┘       → Record to HISTORY.md
-       │              → Delete WORK.md
-       ▼
-┌──────────────┐
-│  Complete    │ → STATE.md cleared
-└──────────────┘       → Ready for next phase
+```mermaid
+graph TD
+  Planning[Planning] -->|Moodboard -> User confirms| Execution[Execution]
+  Execution -->|Verbose WORK.md logging -> Capture loops to INBOX.md| Promotion[Promotion]
+  Promotion -->|Extract to PR/doc -> Record to HISTORY.md -> Delete WORK.md| Complete[Complete]
+  Complete -->|STATE.md cleared| Next[Ready for next phase]
 ```
 
 ---
