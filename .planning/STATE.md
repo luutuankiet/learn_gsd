@@ -100,7 +100,9 @@ Recent decisions affecting current work:
 
 ### Pending Todos
 
-None yet.
+1. **Update README.md for human developer orientation** - Create central place to understand gsd-lite design, philosophy, why ultra-slim context, distinction from OG GSD (no central PROJECT/ROADMAP). README should orient new users to the system.
+
+2. **Create evaluation scenario for testing gsd-lite iterations** - Build test scenario to validate gsd-lite behavior across iterations, ensuring coaching model and context lifecycle work as designed.
 
 ### Blockers/Concerns
 

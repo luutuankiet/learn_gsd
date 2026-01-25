@@ -1,125 +1,41 @@
-# Checkpoint Workflow
+# Promotion Workflow
 
-[SYSTEM: CHECKPOINT MODE - Promotion/Handoff]
+[SYSTEM: PROMOTION MODE - Phase Completion]
 
 ## Entry Conditions
 
 - User requests "complete phase" or "promote"
 - All tasks in scope marked complete
 - No blocking loops remain
+- User ready to finalize and close phase
 
 ## Exit Conditions
 
 - HISTORY.md updated with phase record
 - WORK.md trimmed (deleted)
 - STATE.md cleared for next phase
+- External artifacts created (PR description, docs)
 - User informed of promotion
 
 ---
 
-## Context Lifecycle: Checkpoint → Clear → Resume
+## Coaching Philosophy
 
-This is the core pattern that enables GSD-Lite to work across multiple sessions with fresh context windows.
+**User = founder/visionary. You = builder.**
 
-### 1. Checkpoint (end of session)
+The user knows:
+- How they imagine it working
+- What it should look/feel like
+- What's essential vs nice-to-have
+- Specific behaviors or references they have in mind
 
-**What happens:**
+The user doesn't know (and shouldn't be asked):
+- Codebase patterns (researcher reads the code)
+- Technical risks (researcher identifies these)
+- Implementation approach (planner figures this out)
+- Success metrics (inferred from the work)
 
-- Agent signals completion readiness
-- User triggers promotion workflow
-- STATE.md captures: current phase, decisions made, session log
-- WORK.md trimmed after extraction to external artifact
-- Result: Clean slate for next session
-
-**Example:**
-
-```
-Agent: "All tasks complete. Ready to promote?"
-User: "complete phase"
-Agent:
-  1. Extracts PR description from WORK.md
-  2. Updates HISTORY.md with one-line entry
-  3. Deletes WORK.md content
-  4. Updates STATE.md to "no active phase"
-```
-
-**Why this matters:** Checkpointing ensures all context is preserved in artifacts, not chat history.
-
-### 2. Clear (between sessions)
-
-**What happens:**
-
-- User starts fresh chat (NEW context window)
-- OR orchestrator spawns fresh agent
-- 0% context usage at start
-- No accumulated chat history
-
-**Example:**
-
-```
-Monday (Chat A):
-  - Execute TASK-001, TASK-002
-  - WORK.md logs progress
-  - Context: 45% used
-
-Tuesday (Chat B - FRESH):
-  - New chat started
-  - Context: 0% used
-  - Agent will reconstruct from artifacts
-```
-
-**Why this matters:** Fresh context windows prevent context rot and token budget exhaustion.
-
-### 3. Resume (start of new session)
-
-**What happens:**
-
-- Agent reads PROTOCOL.md (which workflow to load)
-- Reads STATE.md (where were we? what decisions made?)
-- If mid-task: reads WORK.md (what's in progress?)
-- Reconstructs context from artifacts, not chat history
-
-**Example:**
-
-```
-Agent (new session):
-  1. Reads PROTOCOL.md → determines current mode
-  2. Reads STATE.md → sees PHASE-001, TASK-002 in progress
-  3. Reads WORK.md → gets latest progress log
-  4. Continues TASK-002 seamlessly
-```
-
-**Why this matters:** Resume capability means sessions can span days/weeks without losing context.
-
-### Context Lifecycle Diagram
-
-```mermaid
-graph TD
-  Session1[Session 1 - Chat A] -->|End of day| Checkpoint[Checkpoint]
-  Checkpoint -->|Update STATE.md| Clear[Clear]
-  Clear -->|Fresh context window| Session2[Session 2 - Chat B]
-  Session2 -->|Read artifacts| Resume[Resume]
-  Resume -->|Reconstruct context| Continue[Continue work]
-```
-
-### Session Hierarchy Example
-
-```mermaid
-graph TD
-  P1[Phase 1] --> S1[Session 1 - Chat A]
-  P1 --> S2[Session 2 - Chat B]
-  P1 --> S3[Session 3 - Chat C]
-
-  S1 --> T1[TASK-001: Task A ✓]
-  S1 --> T2[TASK-002: Task B - partial]
-
-  S2 --> T2b[TASK-002: Task B continued ✓]
-  S2 --> T3[TASK-003: Task C ✓]
-
-  S3 --> T4[TASK-004: Task D ✓]
-```
-
-**Key insight:** Phases can span multiple sessions. Each session starts fresh, resumes from artifacts.
+**Your role:** Ask about vision and implementation choices. Capture decisions for downstream agents.
 
 ---
 
@@ -263,6 +179,35 @@ WORK.md contains full execution log (ready for promotion).
 
 ---
 
+## Promotion vs Checkpoint
+
+**CRITICAL: These are separate workflows for different purposes.**
+
+| Aspect | Checkpoint (session handoff) | Promotion (this workflow) |
+|--------|---------------------------|---------------------------|
+| **Trigger** | End of session, mid-phase | Phase complete |
+| **WORK.md** | PRESERVED (not trimmed) | TRIMMED (after extraction) |
+| **Purpose** | Continue work later | Finalize and close phase |
+| **STATE.md** | Active phase remains | Cleared for next phase |
+| **Frequency** | Multiple times per phase | Once per phase |
+
+**Example timeline:**
+
+```
+Monday: Execute TASK-001 → Checkpoint (WORK.md preserved)
+Tuesday: Resume, execute TASK-002 → Checkpoint (WORK.md preserved)
+Wednesday: Complete TASK-003 → Promotion (WORK.md trimmed, phase closed)
+```
+
+**Why separate:**
+
+1. **Checkpoint enables cross-session work** - Same phase spans multiple days/sessions
+2. **Promotion finalizes outcomes** - Extract to PR, trim WORK.md, close phase
+3. **Decoupling prevents data loss** - Frequent checkpoints don't risk losing WORK.md content
+4. **User controls promotion timing** - Can checkpoint many times before deciding to promote
+
+---
+
 ## Sticky Note Protocol
 
 **At the end of EVERY turn**, include this status block **without exception**.
@@ -308,13 +253,13 @@ SELF-CHECK: agent has completed the following action
 **Contextual actions (when relevant):**
 
 - Loop-related: `/close-loop [ID]`, `/explore-loop [ID]`, `/defer-loop [ID]`
-- Phase-related: `/complete-phase`, `/review-phase`
+- Phase-related: `/start-phase` (after promotion complete)
 - Decision-related: `/make-decision`, `/defer-decision`
 
-### Example with Systematic IDs
+### Example Promotion Status
 
 ```gsd-status
-📋 UPDATED: HISTORY.md (added PHASE-001 record), STATE.md (cleared active phase)
+📋 UPDATED: HISTORY.md (added PHASE-001 record), STATE.md (cleared active phase), WORK.md (trimmed)
 
 CURRENT STATE:
 - Phase: None - Awaiting next phase planning
@@ -343,19 +288,11 @@ Progress indicators appear at the bottom of sticky note block:
 
 ```
 ---
-📊 PROGRESS: PHASE-001 [██████░░░░] 60% (3/5 tasks complete)
----
-```
-
-Or after promotion:
-
-```
----
 📊 PROGRESS: n/a (phase promoted)
 ---
 ```
 
-This checkpoint system ensures both agent and user maintain shared understanding of current state.
+This promotion system ensures clean phase boundaries and proper artifact lifecycle.
 
 ---
 
@@ -371,6 +308,49 @@ graph TD
 
 ---
 
+## Common Promotion Scenarios
+
+### Scenario 1: PR Description Creation
+
+```
+User: "complete phase"
+Agent:
+  1. Reads WORK.md verbose log
+  2. Extracts key changes, decisions, evidence
+  3. Writes PR description
+  4. Updates HISTORY.md
+  5. Trims WORK.md
+  6. Clears STATE.md
+```
+
+### Scenario 2: Documentation Update
+
+```
+Agent:
+  1. Extracts decisions from WORK.md
+  2. Updates README or docs
+  3. Records to HISTORY.md
+  4. Trims WORK.md
+  5. Ready for next phase
+```
+
+### Scenario 3: Multiple Sessions Then Promote
+
+```
+Timeline:
+  Monday (Session 1): Execute tasks, checkpoint
+  Tuesday (Session 2): Resume, continue, checkpoint
+  Wednesday (Session 3): Complete, promote
+
+Promotion:
+  - WORK.md contains logs from all 3 sessions
+  - Extract complete narrative
+  - Trim WORK.md (all sessions gone)
+  - Phase closed
+```
+
+---
+
 ## Common Pitfalls to Avoid
 
 1. **Auto-promoting without user request** - User controls when to promote
@@ -379,7 +359,8 @@ graph TD
 4. **Incomplete extraction** - PR description needs full context from WORK.md
 5. **Forgetting sticky reminder** - End every turn with status block
 6. **Not signaling readiness** - Agent must explicitly signal when phase ready
+7. **Confusing promotion with checkpoint** - Different workflows, different purposes
 
 ---
 
-*Checkpoint Workflow - Part of GSD-Lite Protocol v1.0*
+*Promotion Workflow - Part of GSD-Lite Protocol v1.0*

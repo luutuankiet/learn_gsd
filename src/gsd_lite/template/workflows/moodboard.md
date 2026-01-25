@@ -102,6 +102,86 @@ User mentions "frustrated with current tools"
 - question: "What specifically frustrates you?"
 - options: ["Too many clicks", "Missing features", "Unreliable", "Let me explain"]
 
+### Vision Reflection
+
+**CRITICAL: After user describes their vision, reflect back what you understood.**
+
+This helps both sides solidify what the vision really means and catches misalignments early.
+
+**Format:**
+
+```markdown
+## What I Understood
+
+Based on what you've shared, here's what I'm picturing:
+
+**The Vision:**
+[1-2 sentence summary of what they want to build]
+
+**Core Use Case:**
+[Concrete scenario showing the user experience]
+
+**Key Behaviors:**
+- [Essential feature 1 - specific behavior]
+- [Essential feature 2 - specific behavior]
+- [Essential feature 3 - specific behavior]
+
+**What's Essential:**
+[The one thing that matters most - the north star]
+
+**What's Out of Scope (for now):**
+[Things that could be added later but aren't v1]
+
+---
+
+**Does this match your mental model?** If not, tell me what I got wrong.
+```
+
+**Example Vision Reflection:**
+
+```markdown
+## What I Understood
+
+Based on what you've shared, here's what I'm picturing:
+
+**The Vision:**
+A lightweight CRM that helps you maintain meaningful relationships without feeling like work.
+
+**Core Use Case:**
+You meet someone interesting at a conference. You snap their business card, the app extracts info, and 3 weeks later reminds you to follow up with a personalized suggestion based on your last conversation.
+
+**Key Behaviors:**
+- **Effortless capture:** Photo of business card → auto-parsed contact
+- **Smart nudges:** "You haven't talked to Sarah in 3 months - she mentioned wanting book recommendations"
+- **Gentle persistence:** Suggestions float away if ignored, not nagging
+
+**What's Essential:**
+The reminder system needs to feel helpful, not oppressive. If it nags, people will ignore it or abandon the app.
+
+**What's Out of Scope (for now):**
+- Team collaboration features
+- Email integration beyond basic parsing
+- Calendar blocking or meeting scheduling
+
+---
+
+**Does this match your mental model?** If not, tell me what I got wrong.
+```
+
+**Why this matters:**
+
+- Catches misunderstandings before implementation
+- Forces agent to demonstrate comprehension
+- Gives user concrete examples to react to
+- Creates shared vocabulary for the project
+- Surfaces hidden assumptions on both sides
+
+**When to reflect:**
+
+- After initial vision dump (before first questions)
+- After answering clarifying questions (before decision gate)
+- Anytime you sense confusion or ambiguity
+
 ### MOODBOARD Question Structure
 
 Start header: `📫📫📫📫📫📫📫 QUESTION 📫📫📫📫📫📫📫`
