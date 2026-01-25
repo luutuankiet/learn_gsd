@@ -17,6 +17,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [ ] **Phase 1.1: Allow Flexible Token Budget** - Handle token budget flexibility (INSERTED)
 - [x] **Phase 1.2: Audit and Fix Template Coherence** - Fix template coherence for single-agent sessions (INSERTED)
 - [x] **Phase 1.3: Context Lifecycle, Coaching Model & Workflow Decomposition** - User-controlled context, coaching philosophy, per-workflow files (INSERTED)
+- [ ] **Phase 1.4: Enrich Checkpoint Workflow** - Enrich checkpoint workflow (INSERTED)
 - [ ] **Phase 2: Session Handoff System** - Eliminate context reconstruction between sessions
 - [ ] **Phase 3: Context Engineering Patterns** - Token budget management and context optimization
 - [ ] **Phase 4: Educational Integration & Validation** - Teach through templates and validate on real work
@@ -118,6 +119,23 @@ Plans:
 - [x] 01.3-04-PLAN.md — Analyze eval findings (coaching + architectural lens)
 - [x] 01.3-05-PLAN.md — Verify workflow decomposition, fixes, and human review
 
+### Phase 1.4: Enrich Checkpoint Workflow (INSERTED)
+**Goal**: Enhance checkpoint workflow to preserve work-in-progress state with Current Understanding section and type-tagged session logs
+**Depends on**: Phase 1.3
+**Requirements**: None (enhancement to existing checkpoint workflow)
+**Success Criteria** (what must be TRUE):
+  1. Fresh agent can resume multi-session work in 30 seconds by reading Current Understanding
+  2. Session logs capture all work types (vision, decisions, plans, execution, blockers)
+  3. Type tags enable non-linear retrieval via grep
+  4. User can revisit planning decisions without restarting discovery
+  5. WORK.md semantic fits moodboard/whiteboard/execution modes
+
+**Plans:** 2 plans
+
+Plans:
+- [ ] 01.4-01-PLAN.md — Update WORK.md template and checkpoint workflow
+- [ ] 01.4-02-PLAN.md — Create revisit workflow and verify templates
+
 ### Phase 2: Session Handoff System
 **Goal**: Create ephemeral working memory system that exports to GTD and eliminates 15-30 min context reconstruction
 **Depends on**: Phase 1
@@ -162,7 +180,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 1.3 → 2 → 3 → 4
+Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 1.3 → 1.4 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -171,10 +189,11 @@ Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 1.3 → 2 → 3 →
 | 1.1. Allow Flexible Token Budget (INSERTED) | 0/TBD | Not started | - |
 | 1.2. Audit and Fix Template Coherence (INSERTED) | 3/3 | Completed | 2026-01-23 |
 | 1.3. Context Lifecycle & Workflow Decomposition (INSERTED) | 5/5 | Completed | 2026-01-25 |
+| 1.4. Enrich Checkpoint Workflow (INSERTED) | 0/TBD | Not started | - |
 | 2. Session Handoff System | 0/TBD | Not started | - |
 | 3. Context Engineering Patterns | 0/TBD | Not started | - |
 | 4. Educational Integration & Validation | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-01-19*
-*Last updated: 2026-01-25 (Phase 1.3 completed - workflow decomposition, checkpoint/promotion split, PyPI path correction)*
+*Last updated: 2026-01-25 (Phase 1.4 inserted - enrich checkpoint workflow)*
