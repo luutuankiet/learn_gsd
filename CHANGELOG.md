@@ -2,6 +2,20 @@
 
 <!-- version list -->
 
+## v1.5.0 (2026-01-25)
+
+### Documentation
+
+- Update readme
+  ([`a09f077`](https://github.com/luutuankiet/gsd-lite/commit/a09f077243a46374121df4485ddf9b0a68441ad8))
+
+### Features
+
+- Add `revisit` workflow and better checkpoint instructions
+  ([#5](https://github.com/luutuankiet/gsd-lite/pull/5),
+  [`c4f4b7c`](https://github.com/luutuankiet/gsd-lite/commit/c4f4b7cada5a09ca7e05ebc8ddda6373894d8411))
+
+
 ## v1.4.0 (2026-01-25)
 
 ### Features
