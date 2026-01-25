@@ -2,6 +2,106 @@
 
 <!-- version list -->
 
+## v1.6.0 (2026-01-25)
+
+### Bug Fixes
+
+- **01.4**: Orchestrator corrections - mark phase 1.4 complete, update config
+  ([`6c9d757`](https://github.com/luutuankiet/gsd-lite/commit/6c9d75755997889ca5306d47862d118c661937ba))
+
+- **01.4-02**: Clarify WORK.md examples as templates
+  ([`cab2d0c`](https://github.com/luutuankiet/gsd-lite/commit/cab2d0cf772f3c96b77ea3af2f48522121faf008))
+
+- **01.4-02**: Update PROTOCOL.md with complete workflow routing
+  ([`ff4567a`](https://github.com/luutuankiet/gsd-lite/commit/ff4567afd0a0b32c6b91fe9600877c9aa460331f))
+
+### Chores
+
+- **01.5-02**: Add gitignore for simulation artifacts
+  ([`6ac9cbe`](https://github.com/luutuankiet/gsd-lite/commit/6ac9cbead76934c598acd7e77eb2fbb29b34d2c9))
+
+### Documentation
+
+- **01.4**: Capture phase context
+  ([`4fd5c27`](https://github.com/luutuankiet/gsd-lite/commit/4fd5c27564d78bbdf37a7b3bf74dbb1eef5a596d))
+
+- **01.4**: Complete enrich checkpoint workflow phase
+  ([`7327627`](https://github.com/luutuankiet/gsd-lite/commit/7327627f27a8f912fe60a9e4001f5e4365ec7178))
+
+- **01.4**: Create phase plan
+  ([`39986d6`](https://github.com/luutuankiet/gsd-lite/commit/39986d6c8240bcf8e443b25a06f888d84c6ea81a))
+
+- **01.4**: Research phase domain
+  ([`a5d55ec`](https://github.com/luutuankiet/gsd-lite/commit/a5d55ecc00f258ae329bef12917b85e36e72021a))
+
+- **01.4-01**: Complete WORK.md enrichment and checkpoint workflow update plan
+  ([`f486bad`](https://github.com/luutuankiet/gsd-lite/commit/f486bada2ea9446af2fbe1e84e75240c85d753c3))
+
+- **01.4-02**: Complete revisit workflow and template coherence plan
+  ([`9634f71`](https://github.com/luutuankiet/gsd-lite/commit/9634f71f91c7be6bed05e0804d1e68f71c637fa6))
+
+- **01.4-02**: Enhance README with artifact synergy overview
+  ([`5d54935`](https://github.com/luutuankiet/gsd-lite/commit/5d549353b7308094d7805173df326d6db21704da))
+
+- **01.5**: Capture phase context
+  ([`95974a7`](https://github.com/luutuankiet/gsd-lite/commit/95974a7736d65554c6ebf1e914e2fa80d7f08f59))
+
+- **01.5**: Research phase domain
+  ([`b50cd80`](https://github.com/luutuankiet/gsd-lite/commit/b50cd806359a6c7e358ba374d0c8340cc2e3dbac))
+
+- **01.5-01**: Add simulation environment readme
+  ([`ec5b204`](https://github.com/luutuankiet/gsd-lite/commit/ec5b204c34bbb48c7e19890bb5c1df65339dfc14))
+
+- **01.5-01**: Complete simulation sandbox setup plan
+  ([`8ab4e5c`](https://github.com/luutuankiet/gsd-lite/commit/8ab4e5c1e43f53e08765a12f8781df2b0eb541b3))
+
+- **01.5-02**: Complete evaluation protocol plan
+  ([`86c3448`](https://github.com/luutuankiet/gsd-lite/commit/86c34481e54c7308a6502d883c556ec4c9ad4727))
+
+- **01.5-02**: Create driver manual for gsd-lite evaluation
+  ([`bfd6ca4`](https://github.com/luutuankiet/gsd-lite/commit/bfd6ca4fddca263c89c3b60de266cc27ea9c55dc))
+
+- **01.5-02**: Create evaluation log template
+  ([`dac4ff1`](https://github.com/luutuankiet/gsd-lite/commit/dac4ff15ac3a77f14832fc931c66b3f8e53cc959))
+
+- **01.6**: Capture phase context
+  ([`36d0cf3`](https://github.com/luutuankiet/gsd-lite/commit/36d0cf364387c97c4fd6cc28c21714539c4d12f2))
+
+- **01.6**: Create phase plan
+  ([`b0c14b1`](https://github.com/luutuankiet/gsd-lite/commit/b0c14b191f3c8620c768e6ffa098cfb579c7568d))
+
+- **01.6**: Research phase domain
+  ([`6d51b49`](https://github.com/luutuankiet/gsd-lite/commit/6d51b490c1aa421245138708ac9780d81f736d66))
+
+- **phase-1.5**: Complete evaluation framework phase
+  ([`d84b30b`](https://github.com/luutuankiet/gsd-lite/commit/d84b30bbf7bdc65a16f909447ae889fa5092cbe3))
+
+### Features
+
+- **01.4-01**: Enrich WORK.md with Current Understanding and type-tagged session log
+  ([`b945246`](https://github.com/luutuankiet/gsd-lite/commit/b945246f5a9044563162ff1b6325a076a4cfb3f1))
+
+- **01.4-01**: Update checkpoint workflow with Current Understanding maintenance
+  ([`21f1563`](https://github.com/luutuankiet/gsd-lite/commit/21f1563ad04eca0434b6ddfba145528a62210bfe))
+
+- **01.4-02**: Create revisit workflow for post-whiteboard rethinking
+  ([`5a346c4`](https://github.com/luutuankiet/gsd-lite/commit/5a346c48b054f8ccb6f8eb1f34b0d215be32d986))
+
+- **01.5-01**: Create input csv data
+  ([`77264d1`](https://github.com/luutuankiet/gsd-lite/commit/77264d15a9c18c9a37d844f1e805d990caf1e2d1))
+
+- **01.5-01**: Implement etl modules
+  ([`74987b1`](https://github.com/luutuankiet/gsd-lite/commit/74987b12c3c66e62c4542b0f79a4be9d24949827))
+
+- **01.5-01**: Implement pipeline orchestrator
+  ([`abff27e`](https://github.com/luutuankiet/gsd-lite/commit/abff27e3c1a98f6448f6e96a8da48e66f3062289))
+
+### Testing
+
+- **01.5-01**: Add transformation unit tests
+  ([`19c4203`](https://github.com/luutuankiet/gsd-lite/commit/19c4203df8cc64ace0b8cff52f27d3b3a3908572))
+
+
 ## v1.5.0 (2026-01-25)
 
 ### Documentation
