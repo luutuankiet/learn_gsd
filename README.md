@@ -28,15 +28,85 @@ Instead of treating the chat as ephemeral, GSD-Lite forces the agent to maintain
 
 ### The Artifacts
 
-| File | Purpose |
-|------|---------|
-| **`PROTOCOL.md`** | The rulebook and router. The agent reads this to know how to behave and which workflow to load. |
-| **`STATE.md`** | The high-level map. Tracks Phase, Current Task, and Decisions. |
-| **`WORK.md`** | The execution log. Tracks every action, file change, and command. |
-| **`INBOX.md`** | The parking lot. Captures scope creep, ideas, and bugs for later. |
-| **`HISTORY.md`** | The ledger. A permanent record of completed phases. |
-| **`workflows/`** | A directory of markdown files, each defining a specific workflow (e.g., `moodboard.md`, `execution.md`). |
-| **`workflows/promotion.md`** | A special workflow for promoting results and cleaning up logs at the end of a phase. |
+GSD-Lite uses **ultra-trimmed artifacts** optimized for context engineering. Each file is designed to be read quickly by agents (especially weaker models) without overwhelming context windows. This README provides the high-level overview and reasoning that's deliberately omitted from the artifacts themselves.
+
+#### Core Artifacts
+
+| File | Purpose | Why Ultra-Trimmed |
+|------|---------|-------------------|
+| **`PROTOCOL.md`** | The rulebook and router. The agent reads this first to understand how to behave and which workflow to load. | First file agents read - must be scannable in <10 seconds to determine next action. |
+| **`STATE.md`** | The high-level map. Tracks Phase, Current Task, and Key Decisions. | Agents need quick "where are we?" answer without re-reading full session history. |
+| **`WORK.md`** | The execution log. Tracks every action, file change, and decision with type-tagged entries. | Detailed but structured - type tags enable grep queries instead of reading entire file. |
+| **`INBOX.md`** | The parking lot. Captures scope creep, ideas, and bugs for later phases. | Prevents distraction - agent can capture idea and move on without context switching. |
+| **`HISTORY.md`** | The ledger. A permanent record of completed phases. | Archive for reference - rarely read during active work. |
+
+#### Workflow Files
+
+The `workflows/` directory contains step-by-step instructions for different session types. Each workflow is a self-contained recipe that agents follow.
+
+| Workflow | When Used | Agent Actions |
+|----------|-----------|---------------|
+| **`moodboard.md`** | Start of new phase | Extract user vision through interview, capture preferences, identify references |
+| **`whiteboard.md`** | After vision extracted | Present plan for user approval, break into tasks, identify risks |
+| **`execution.md`** | Active development | Execute tasks, update WORK.md with progress, capture blockers to INBOX.md |
+| **`checkpoint.md`** | End of session (mid-phase) | Update STATE.md, preserve WORK.md, prepare for fresh agent resume |
+| **`revisit.md`** | User wants to rethink plan | Review current plan, capture new ideas, compare changes, revise if needed |
+| **`promotion.md`** | Phase complete | Extract key outcomes, trim WORK.md, archive to HISTORY.md, clear for next phase |
+
+**Why separate workflows?** Each session type has different goals and artifact updates. Separating them prevents agents from confusing checkpoint (preserve WORK.md) with promotion (trim WORK.md).
+
+## 🔗 How Artifacts Work Together
+
+GSD-Lite is a **coherent system** where each artifact plays a specific role. Here's how they synergize:
+
+### Agent Entry Flow
+1. **Agent reads PROTOCOL.md** → Learns routing rules and golden rules
+2. **Agent reads STATE.md** → Determines current mode (planning, execution, checkpoint, etc.)
+3. **Agent loads workflow file** → Follows step-by-step instructions for that session type
+4. **Agent updates artifacts** → STATE.md (where we are), WORK.md (what we did), INBOX.md (what's deferred)
+
+### Session Continuity (The Magic)
+**Problem:** AI chat sessions lose context over time. Long projects need multiple sessions.
+
+**Solution:** GSD-Lite uses a **checkpoint → clear → resume** cycle:
+
+1. **Checkpoint** (end of session):
+   - Agent updates STATE.md with current progress
+   - Agent updates WORK.md Current Understanding section (30-second context summary)
+   - WORK.md full log preserved (NOT trimmed)
+
+2. **Clear** (between sessions):
+   - You start a fresh chat (or orchestrator spawns fresh agent)
+   - Zero context from previous chat
+   - Clean slate, no context rot
+
+3. **Resume** (start of new session):
+   - Fresh agent reads PROTOCOL.md → routing rules
+   - Fresh agent reads STATE.md → current phase/task
+   - Fresh agent reads WORK.md Current Understanding → 30-second context summary
+   - Fresh agent continues work seamlessly
+
+**Why this works:** Context is stored in *files* (permanent, structured), not *chat history* (ephemeral, unstructured). Fresh agents reconstruct context from artifacts, not from scrolling through chat logs.
+
+### WORK.md: The Context Bridge
+
+WORK.md has two sections that work together:
+
+- **Current Understanding** (top of file): Updated at checkpoint time. Provides fresh agents with essential context in 30 seconds. Includes: where we are, what user wants, key decisions, blockers, next action.
+
+- **Session Log** (chronological): Detailed history using type tags. Enables grep queries like `grep "\[DECISION\]" WORK.md` to see all decisions without reading full log.
+
+**Why both sections?** Current Understanding is optimized for resume (fast), Session Log is optimized for debugging (complete).
+
+### Context Engineering Rationale
+
+**Why ultra-trimmed?** GSD-Lite artifacts are designed for weaker models (GPT-3.5, early Claude) and limited context windows. By removing reasoning/overview from artifacts and putting it in README, we:
+
+1. **Reduce token usage** - Agents read less to determine next action
+2. **Improve weak model performance** - Clear instructions, no ambiguity
+3. **Enable maintainability** - README explains "why", artifacts explain "what/how"
+
+**Trade-off:** Artifacts may seem terse on first read. This README bridges that gap for humans. Agents follow artifacts, humans read README.
 
 ## 🛠️ Usage
 
@@ -47,14 +117,16 @@ Instead of treating the chat as ephemeral, GSD-Lite forces the agent to maintain
    - **Planning Mode:** Creating a Moodboard and defining scope (`moodboard.md`).
    - **Execution Mode:** Logging work and updating state (`execution.md`).
    - **Checkpoint Mode:** Saving session state for later continuation (`checkpoint.md`).
+   - **Revisit Mode:** Reconsidering plan after approval (`revisit.md`).
    - **Promotion Mode:** Promoting results and cleaning up logs (`promotion.md`).
 
-## ✨ Synergy between the artifacts
+## ✨ Artifact Synergy Diagram
 
 ```mermaid
 graph TD
     subgraph "User (Founder)"
         A[Sets Vision & Approves Plan]
+        A2[User: 'revisit' or 'checkpoint']
     end
 
     subgraph "Agent (Builder)"
@@ -66,6 +138,7 @@ graph TD
         G[execution.md]
         H[checkpoint.md]
         I[promotion.md]
+        R[revisit.md]
     end
 
     subgraph "Artifacts"
@@ -76,6 +149,8 @@ graph TD
     end
 
     A --> B
+    A2 --> R
+    A2 --> H
 
     B --> C
     C --> D
@@ -93,8 +168,11 @@ graph TD
     G -- "Captures to" --> L
     G -- "Updates" --> J
 
-    H -- "Saves to" --> J
-    H -- "Saves to" --> K
+    H -- "Preserves" --> K
+    H -- "Updates" --> J
+
+    R -- "Revises" --> J
+    R -- "Captures to" --> K
 
     I -- "Updates" --> J
     I -- "Clears" --> K

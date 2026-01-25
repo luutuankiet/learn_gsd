@@ -1,5 +1,6 @@
 {
   "mode": "yolo",
   "depth": "quick",
-  "parallelization": "enabled"
+  "parallelization": "enabled",
+  "model_profile": "budget"
 }
