@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 
 ## Current Position
 
-Phase: 1.3 of 6 (Context Lifecycle, Coaching Model & Workflow Decomposition)
-Plan: 5 of 5 (Phase 1.3 complete)
-Status: Phase complete
-Last activity: 2026-01-25 — Completed 01.3-05-PLAN.md (workflow verification & fixes)
+Phase: 1.4 of 6 (Enrich Checkpoint Workflow)
+Plan: 1 of 2 (Phase 1.4 in progress)
+Status: In progress
+Last activity: 2026-01-25 — Completed 01.4-01-PLAN.md (WORK.md enrichment + checkpoint workflow update)
 
-Progress: [████░░░░░░] 40% (Phase 0 + Phase 1 + Phase 1.2 + Phase 1.3 complete, Phase 1.1 pending)
+Progress: [████░░░░░░] 43% (Phase 0 + Phase 1 + Phase 1.2 + Phase 1.3 + partial Phase 1.4 complete, Phase 1.1 pending)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 12
-- Average duration: 3.6 min
-- Total execution time: 0.72 hours
+- Total plans completed: 13
+- Average duration: 3.5 min
+- Total execution time: 0.76 hours
 
 **By Phase:**
 
@@ -30,10 +30,11 @@ Progress: [████░░░░░░] 40% (Phase 0 + Phase 1 + Phase 1.2 + 
 | 1. Foundation & Templates | 4 | 22 min | 5.5 min |
 | 1.2 Audit & Fix Template Coherence | 3 | 7 min | 2.3 min |
 | 1.3 Context Lifecycle & Workflow Decomposition | 5 | 17.5 min | 3.5 min |
+| 1.4 Enrich Checkpoint Workflow | 1 | 2.8 min | 2.8 min |
 
 **Recent Trend:**
-- Last 5 plans: 01.3-02 (4 min), 01.3-03 (2.5 min), 01.3-04 (3 min), 01.3-05 (4 min)
-- Trend: Excellent velocity (2.5-4 min per plan, averaging 3.4 min)
+- Last 5 plans: 01.3-03 (2.5 min), 01.3-04 (3 min), 01.3-05 (4 min), 01.4-01 (2.8 min)
+- Trend: Excellent velocity (2.5-4 min per plan, averaging 3.1 min)
 
 *Updated after each plan completion*
 
@@ -45,6 +46,8 @@ Progress: [████░░░░░░] 40% (Phase 0 + Phase 1 + Phase 1.2 + 
 - Phase 1.1 inserted after Phase 1: Allow Flexible Token Budget (URGENT) - handle token budget flexibility discovered after Phase 1 completion
 - Phase 1.2 inserted after Phase 1: Audit and fix template coherence for single-agent sessions (URGENT) - user found confusion when reading templates, must fix before Phase 2 uses them
 - Phase 1.3 inserted after Phase 1.2: Context Lifecycle, Coaching Model & Workflow Decomposition (URGENT) - eval findings revealed context rot as core problem, need to document coaching philosophy and decompose protocol into per-workflow files
+- Phase 1.4 inserted after Phase 1.3: Enrich Checkpoint Workflow (URGENT) - enhance checkpoint workflow discovered after Phase 1.3 completion
+- Phase 1.5 inserted after Phase 1.4: Evaluation Framework for GSD-lite (URGENT) - build eval sequence with simulated repo, step-by-step prompts, reference responses, and eval notes for iterative QC
 
 ### Decisions
 
@@ -100,6 +103,10 @@ Recent decisions affecting current work:
 - Checkpoint-promotion separation (01.3-05): Checkpoint preserves WORK.md for cross-session work, promotion trims after extraction to external artifacts
 - Vision reflection playback (01.3-05): Agent reflects understanding back to user with concrete examples before proceeding (per questioning.md)
 - PyPI template distribution (01.3-05): Workflow files distributed via src/gsd_lite/template/ per __main__.py distribution route
+- Current Understanding structure (01.4-01): Use 5 XML sections from OG GSD pause-work (current_state, vision, decisions, blockers, next_action) for 30-second fresh agent resume
+- WORK.md semantic broadening (01.4-01): Session work log captures all work types (vision, planning, execution, blockers), not just execution
+- Type-tagged session entries (01.4-01): Five tags ([VISION], [DECISION], [PLAN], [EXEC], [BLOCKER]) enable grep-based non-linear access
+- Current Understanding update timing (01.4-01): Update at checkpoint time only (not every turn) to prevent mid-session churn
 
 ### Pending Todos
 
@@ -121,9 +128,9 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-25
-Stopped at: Completed 01.3-05-PLAN.md (workflow verification & fixes) - Phase 1.3 complete
+Stopped at: Completed 01.4-01-PLAN.md (WORK.md enrichment + checkpoint workflow update)
 Resume file: None
 
 ---
 *State initialized: 2026-01-19*
-*Last updated: 2026-01-25 (Inserted Phase 1.3)*
+*Last updated: 2026-01-25 (Completed 01.4-01)*
