@@ -2,6 +2,9 @@
 
 [SYSTEM: MOODBOARD MODE - Dream Extraction]
 
+## Initialization Check
+Check if `STATE.md` exists. If yes, READ IT and ADOPT current state. Do NOT overwrite with template.
+
 ## Entry Conditions
 
 - New phase starts (no existing WHITEBOARD)

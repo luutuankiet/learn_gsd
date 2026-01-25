@@ -49,6 +49,7 @@ Progress: [███████░░░] 64% (Phase 0-1.5 complete)
 - Phase 1.3 inserted after Phase 1.2: Context Lifecycle, Coaching Model & Workflow Decomposition (URGENT) - eval findings revealed context rot as core problem, need to document coaching philosophy and decompose protocol into per-workflow files
 - Phase 1.4 inserted after Phase 1.3: Enrich Checkpoint Workflow (URGENT) - enhance checkpoint workflow discovered after Phase 1.3 completion
 - Phase 1.5 inserted after Phase 1.4: Evaluation Framework for GSD-lite (URGENT) - build eval sequence with simulated repo, step-by-step prompts, reference responses, and eval notes for iterative QC
+- Phase 1.6 inserted after Phase 1.5: Fix agent overriding examples in scaffolded file (URGENT) - commands are under ~/.config/opencode
 
 ### Decisions
 

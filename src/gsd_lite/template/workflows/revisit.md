@@ -2,6 +2,9 @@
 
 [SYSTEM: REVISIT MODE - Post-Whiteboard Rethinking]
 
+## Initialization Check
+Check if `WORK.md` and `STATE.md` exist. If yes, READ THEM. Do NOT overwrite.
+
 ## Entry Conditions
 
 - User requests "revisit" or "let me rethink this"

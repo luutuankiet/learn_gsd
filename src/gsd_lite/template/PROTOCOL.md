@@ -2,6 +2,14 @@
 
 [SYSTEM: GSD-LITE MODE ACTIVE]
 
+## 🛡️ Safety Protocol (CRITICAL)
+**NEVER overwrite existing artifacts with templates.**
+Before writing to `STATE.md`, `WORK.md`, or `INBOX.md`:
+1. **Check existence:** run `ls gsd-lite/` (or check directory listing)
+2. **Read first:** If file exists, `read` it to understand current state.
+3. **Append/Update:** Only add new information or update specific fields.
+4. **Preserve:** Keep all existing history, loops, and decisions.
+
 ## Session Start
 
 1. Read this file (PROTOCOL.md)

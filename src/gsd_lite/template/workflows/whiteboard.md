@@ -2,6 +2,9 @@
 
 [SYSTEM: WHITEBOARD MODE - Plan Proposal]
 
+## Initialization Check
+Check if `WORK.md` exists. If yes, READ IT. Append new plan to it. Do NOT overwrite.
+
 ## Entry Conditions
 
 - After moodboard complete (user says "ready to see plan")

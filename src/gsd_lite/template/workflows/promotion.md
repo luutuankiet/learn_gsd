@@ -2,6 +2,9 @@
 
 [SYSTEM: PROMOTION MODE - Phase Completion]
 
+## Initialization Check
+Check if `WORK.md` and `STATE.md` exist. If yes, READ THEM. Do NOT overwrite.
+
 ## Entry Conditions
 
 - User requests "complete phase" or "promote"

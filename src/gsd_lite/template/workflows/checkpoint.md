@@ -2,6 +2,9 @@
 
 [SYSTEM: CHECKPOINT MODE - Session Handoff]
 
+## Initialization Check
+Check if `STATE.md`, `WORK.md`, and `INBOX.md` exist. If yes, READ THEM and ADOPT current state. Do NOT overwrite with templates.
+
 ## Entry Conditions
 
 - User ends session mid-phase (work continuing later)
