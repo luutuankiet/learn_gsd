@@ -2,6 +2,15 @@
 
 <!-- version list -->
 
+## v1.4.0 (2026-01-25)
+
+### Features
+
+- Context Lifecycle, Coaching Model & Workflow Decomposition
+  ([#4](https://github.com/luutuankiet/gsd-lite/pull/4),
+  [`bc13fe6`](https://github.com/luutuankiet/gsd-lite/commit/bc13fe6549571d9757779c56058f7731341a740a))
+
+
 ## v1.3.4 (2026-01-24)
 
 ### Bug Fixes
