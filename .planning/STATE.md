@@ -10,18 +10,18 @@ See: .planning/PROJECT.md (updated 2026-01-19)
 ## Current Position
 
 Phase: 1.4 of 6 (Enrich Checkpoint Workflow)
-Plan: 1 of 2 (Phase 1.4 in progress)
-Status: In progress
-Last activity: 2026-01-25 — Completed 01.4-01-PLAN.md (WORK.md enrichment + checkpoint workflow update)
+Plan: 2 of 2 (Phase 1.4 COMPLETE)
+Status: Phase complete
+Last activity: 2026-01-25 — Completed 01.4-02-PLAN.md (revisit workflow + template coherence fixes)
 
-Progress: [████░░░░░░] 43% (Phase 0 + Phase 1 + Phase 1.2 + Phase 1.3 + partial Phase 1.4 complete, Phase 1.1 pending)
+Progress: [████░░░░░░] 45% (Phase 0 + Phase 1 + Phase 1.2 + Phase 1.3 + Phase 1.4 complete, Phase 1.1 pending)
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 13
-- Average duration: 3.5 min
-- Total execution time: 0.76 hours
+- Total plans completed: 14
+- Average duration: 3.4 min
+- Total execution time: 0.81 hours
 
 **By Phase:**
 
@@ -30,11 +30,11 @@ Progress: [████░░░░░░] 43% (Phase 0 + Phase 1 + Phase 1.2 + 
 | 1. Foundation & Templates | 4 | 22 min | 5.5 min |
 | 1.2 Audit & Fix Template Coherence | 3 | 7 min | 2.3 min |
 | 1.3 Context Lifecycle & Workflow Decomposition | 5 | 17.5 min | 3.5 min |
-| 1.4 Enrich Checkpoint Workflow | 1 | 2.8 min | 2.8 min |
+| 1.4 Enrich Checkpoint Workflow | 2 | 5.9 min | 3.0 min |
 
 **Recent Trend:**
-- Last 5 plans: 01.3-03 (2.5 min), 01.3-04 (3 min), 01.3-05 (4 min), 01.4-01 (2.8 min)
-- Trend: Excellent velocity (2.5-4 min per plan, averaging 3.1 min)
+- Last 5 plans: 01.3-04 (3 min), 01.3-05 (4 min), 01.4-01 (2.8 min), 01.4-02 (3.1 min)
+- Trend: Excellent velocity (2.8-4 min per plan, averaging 3.2 min)
 
 *Updated after each plan completion*
 
@@ -107,10 +107,13 @@ Recent decisions affecting current work:
 - WORK.md semantic broadening (01.4-01): Session work log captures all work types (vision, planning, execution, blockers), not just execution
 - Type-tagged session entries (01.4-01): Five tags ([VISION], [DECISION], [PLAN], [EXEC], [BLOCKER]) enable grep-based non-linear access
 - Current Understanding update timing (01.4-01): Update at checkpoint time only (not every turn) to prevent mid-session churn
+- WORK.md example clarification (01.4-02): Prefix examples with "Example:" and add IMPORTANT comments to prevent confusion with actual session logs
+- Primary vs Secondary routing (01.4-02): PROTOCOL.md splits routing into state-based (primary) and user-initiated (secondary) workflows
+- README context engineering rationale (01.4-02): Artifacts ultra-trimmed for agents, README provides reasoning/overview for humans (serves both audiences)
 
 ### Pending Todos
 
-1. **Update README.md for human developer orientation** - Create central place to understand gsd-lite design, philosophy, why ultra-slim context, distinction from OG GSD (no central PROJECT/ROADMAP). README should orient new users to the system.
+1. ~~**Update README.md for human developer orientation**~~ - COMPLETED in 01.4-02. README.md now has "How Artifacts Work Together" section explaining artifact synergy, context engineering rationale, and system coherence.
 
 2. **Create evaluation scenario for testing gsd-lite iterations** - Build test scenario to validate gsd-lite behavior across iterations, ensuring coaching model and context lifecycle work as designed.
 
@@ -128,9 +131,9 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-01-25
-Stopped at: Completed 01.4-01-PLAN.md (WORK.md enrichment + checkpoint workflow update)
+Stopped at: Completed 01.4-02-PLAN.md (revisit workflow + template coherence fixes) - Phase 1.4 COMPLETE
 Resume file: None
 
 ---
 *State initialized: 2026-01-19*
-*Last updated: 2026-01-25 (Completed 01.4-01)*
+*Last updated: 2026-01-25 (Completed 01.4-02 - Phase 1.4 complete)*
