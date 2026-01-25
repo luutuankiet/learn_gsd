@@ -15,7 +15,8 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 0: GSD Pattern Analysis** - Reference setup (completed via Quick 001)
 - [x] **Phase 1: Foundation & Templates** - File-based protocol and template structure
 - [ ] **Phase 1.1: Allow Flexible Token Budget** - Handle token budget flexibility (INSERTED)
-- [ ] **Phase 1.2: Audit and Fix Template Coherence** - Fix template coherence for single-agent sessions (INSERTED)
+- [x] **Phase 1.2: Audit and Fix Template Coherence** - Fix template coherence for single-agent sessions (INSERTED)
+- [ ] **Phase 1.3: Context Lifecycle, Coaching Model & Workflow Decomposition** - User-controlled context, coaching philosophy, per-workflow files (INSERTED)
 - [ ] **Phase 2: Session Handoff System** - Eliminate context reconstruction between sessions
 - [ ] **Phase 3: Context Engineering Patterns** - Token budget management and context optimization
 - [ ] **Phase 4: Educational Integration & Validation** - Teach through templates and validate on real work
@@ -85,6 +86,37 @@ Plans:
 - [x] 01.2-02-PLAN.md — Create supporting templates (STATE.md, WORK.md, INBOX.md, HISTORY.md)
 - [x] 01.2-03-PLAN.md — Cleanup redundant files and human verification
 
+### Phase 1.3: Context Lifecycle, Coaching Model & Workflow Decomposition (INSERTED)
+**Goal**: Define GSD-lite's context control strategy (checkpoint → clear → resume), coaching philosophy (user owns outcome, agent guides), and decompose monolithic protocol into per-workflow files
+**Depends on**: Phase 1.2
+**Requirements**: None (architecture/vision work)
+**Success Criteria** (what must be TRUE):
+  1. Context lifecycle documented (when to checkpoint, when to clear, how to resume)
+  2. Coaching philosophy articulated (user owns outcome, agent is thinking partner)
+  3. PROTOCOL.md decomposed into per-workflow files under `gsd-lite/workflows/`
+  4. Sticky note protocol included in ALL workflow files (universal orientation)
+  5. All ASCII art removed, replaced with markdown headers + mermaid diagrams
+  6. Eval findings (Claude Sonnet, Gemini 3.0 Pro) analyzed through coaching lens
+  7. GSD-lite vs OG GSD architectural differences documented
+
+**Deliverables:**
+- `gsd-lite/workflows/moodboard.md` — Dream extraction mode
+- `gsd-lite/workflows/whiteboard.md` — Plan proposal mode
+- `gsd-lite/workflows/execution.md` — Task execution mode
+- `gsd-lite/workflows/checkpoint.md` — Promotion/handoff mode
+- `gsd-lite/PROTOCOL.md` — Minimal entrypoint (which workflow to load)
+- Updated STATE.md template with mode tracking
+- `eval/ANALYSIS.md` — Eval findings with architectural insights
+
+**Plans:** 5 plans
+
+Plans:
+- [ ] 01.3-01-PLAN.md — Extract moodboard and whiteboard workflows
+- [ ] 01.3-02-PLAN.md — Extract execution and checkpoint workflows
+- [ ] 01.3-03-PLAN.md — Create minimal PROTOCOL.md router and update STATE.md template
+- [ ] 01.3-04-PLAN.md — Analyze eval findings (coaching + architectural lens)
+- [ ] 01.3-05-PLAN.md — Verify workflow decomposition and human review
+
 ### Phase 2: Session Handoff System
 **Goal**: Create ephemeral working memory system that exports to GTD and eliminates 15-30 min context reconstruction
 **Depends on**: Phase 1
@@ -129,7 +161,7 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 2 → 3 → 4
+Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 1.3 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
@@ -137,10 +169,11 @@ Phases execute in numeric order: 0 → 1 → 1.1 → 1.2 → 2 → 3 → 4
 | 1. Foundation & Templates | 4/4 | Completed | 2026-01-22 |
 | 1.1. Allow Flexible Token Budget (INSERTED) | 0/TBD | Not started | - |
 | 1.2. Audit and Fix Template Coherence (INSERTED) | 3/3 | Completed | 2026-01-23 |
+| 1.3. Context Lifecycle & Workflow Decomposition (INSERTED) | 0/5 | Not started | - |
 | 2. Session Handoff System | 0/TBD | Not started | - |
 | 3. Context Engineering Patterns | 0/TBD | Not started | - |
 | 4. Educational Integration & Validation | 0/TBD | Not started | - |
 
 ---
 *Roadmap created: 2026-01-19*
-*Last updated: 2026-01-23 (Phase 1.2 completed - 5-file GSD-lite structure verified)*
+*Last updated: 2026-01-25 (Phase 1.3 inserted - context lifecycle, coaching model, workflow decomposition)*
