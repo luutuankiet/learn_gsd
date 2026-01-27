@@ -103,3 +103,124 @@ grep "Task: MODEL-A" WORK.md
 Show only logs related to MODEL-A task (useful for multi-task projects)
 
 **Core workflow:** Grep to discover structure, then surgical read of relevant sections. This enables efficient context loading even with 500+ line WORK.md files.
+
+## Typical Session
+
+Here's what a real GSD-Lite session looks like, from initial exploration to completed work.
+
+### Starting Fresh (Moodboard)
+
+**You:** "I want to build a simple REST API for my notes app"
+
+**Agent:** "Let me understand what you're picturing. When you say 'simple', are you thinking:
+1. Just CRUD operations (create, read, update, delete)?
+2. With authentication and user accounts?
+3. Something else?
+
+[YOUR TURN] - Which matches your mental model?"
+
+**You:** "Just CRUD for now. I want to validate the idea first."
+
+**Agent:** "Perfect. So a minimal viable API - we can always add auth later.
+What would creating a note look like? Are you thinking:
+- A title + body?
+- Just free-form text?
+- Tags or categories?
+
+[YOUR TURN] - What feels right to you?"
+
+**You:** "Title and body. Keep it simple."
+
+**Agent:** "Got it. So we're looking at:
+- POST /notes (create with title + body)
+- GET /notes (list all)
+- GET /notes/:id (get one)
+- PUT /notes/:id (update)
+- DELETE /notes/:id (delete)
+
+Does that match your vision?
+
+[YOUR TURN]"
+
+**You:** "Yes, exactly."
+
+**Agent:** "Excellent. I'll log this vision to WORK.md and present you with a plan for review."
+
+### Mid-Session (Execution)
+
+**Agent:** "I'm noticing the notes endpoint doesn't validate empty titles. What if we tried adding validation here?
+
+```typescript
+if (!title || title.trim().length === 0) {
+  throw new ValidationError('Title cannot be empty');
+}
+```
+
+This prevents orphaned notes with no identifier. Does this align with your expectations?
+
+[YOUR TURN] - Should we validate, or allow empty titles?"
+
+**You:** "Yes, validate. Empty titles don't make sense."
+
+**Agent:** "Perfect. Adding validation and logging the decision."
+
+*(Agent executes, logs to WORK.md with code snippet, continues to next task)*
+
+### Wrapping Up (Housekeeping)
+
+**You:** "Write PR for the notes API work"
+
+**Agent:** "Generating PR description from WORK.md logs..."
+
+```markdown
+## Notes API Implementation
+
+Created basic CRUD API for notes with title + body fields.
+
+### Changes
+- POST /notes - create note with validation
+- GET /notes - list all notes
+- GET /notes/:id - retrieve single note
+- PUT /notes/:id - update note
+- DELETE /notes/:id - delete note
+
+### Key Decisions
+- Title validation: reject empty titles (prevents orphaned notes)
+- In-memory storage for MVP (deferred database to future iteration)
+
+### Code Snippets
+[Extracted from WORK.md execution logs with full context]
+```
+
+**You:** "Perfect. Archive this and start fresh for the auth work."
+
+**Agent:** "Archived notes API logs to HISTORY.md. Ready for next session."
+
+## Workflow Diagram
+
+```mermaid
+graph TD
+    Start([New Session]) --> ReadProtocol[Read PROTOCOL.md]
+    ReadProtocol --> ReadWork[Read WORK.md Current Understanding]
+    ReadWork --> CheckMode{Current Mode?}
+
+    CheckMode -->|none/planning| Moodboard[moodboard.md]
+    CheckMode -->|moodboard-complete| Whiteboard[whiteboard.md]
+    CheckMode -->|execution| Execution[execution.md]
+    CheckMode -->|checkpoint| Checkpoint[checkpoint.md]
+
+    Moodboard -->|User: ready for plan| Whiteboard
+    Whiteboard -->|User: approved| Execution
+    Execution -->|Session end| Checkpoint
+    Execution -->|User: write PR| Housekeeping[housekeeping.md]
+
+    Checkpoint --> Resume([Next Session])
+    Housekeeping -->|Archive| History[HISTORY.md]
+```
+
+**Workflow purposes:**
+- **moodboard.md** - Extract user vision through collaborative exploration (thinking partner mode)
+- **whiteboard.md** - Present plan for approval before execution
+- **execution.md** - Execute tasks with pair programming approach (propose hypotheses, challenge assumptions)
+- **checkpoint.md** - Pause session and update WORK.md Current Understanding for fresh agent resume
+- **housekeeping.md** - Extract PR from task logs or archive completed work to HISTORY.md
