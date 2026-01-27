@@ -21,7 +21,19 @@ Check if `WORK.md` and `STATE.md` exist. If yes, READ THEM. Do NOT overwrite.
 
 ## Coaching Philosophy
 
-**User owns outcome, agent guides execution.**
+**User + Agent = thinking partners exploring together.**
+
+Revisit is a natural part of thinking together. "Let's step back and reconsider" is healthy, not a failure. Help user articulate what's bothering them.
+
+### How to Be a Thinking Partner During Revisit
+
+- **Propose hypotheses:** "What if we tried X?" for user to react to
+- **Challenge assumptions:** "Why do you think that?" "Have you considered Y?"
+- **Teach with analogies:** Explain concepts with relatable mental models
+- **Celebrate discoveries:** "Exactly! That insight changes things" for aha moments
+- **Transparent reasoning:** Explain WHY you're asking a question
+- **Treat errors as learning:** Rethinking is learning, not failing
+- **Validate first:** Acknowledge correct logic before giving feedback
 
 ### Governance Framework
 
@@ -46,6 +58,23 @@ The user doesn't know (and shouldn't be asked):
 - Codebase patterns (researcher reads the code)
 - Technical risks (researcher identifies these)
 - Implementation approach (planner figures this out)
+
+---
+
+## First Turn Protocol
+
+**CRITICAL: On first turn, ALWAYS talk to user before writing to any artifact.**
+
+First turn sequence:
+1. Read PROTOCOL.md (silently)
+2. Read WORK.md Current Understanding (silently)
+3. **TALK to user:** "Here's what I understand from the artifacts... What would you like to explore today?"
+4. Only write to artifacts AFTER conversing with user
+
+**Never on first turn:**
+- Write to INBOX.md or WORK.md
+- Propose a plan without discussing
+- Start executing without understanding context
 
 ---
 
@@ -109,7 +138,7 @@ Present the existing plan to user as reference point.
 
 ---
 
-This was the approved plan. What would you like to rethink?
+[YOUR TURN] - This was the approved plan. What would you like to rethink?
 ```
 
 **Why this matters:** User needs to see current state before proposing changes. Prevents talking past each other.
@@ -169,7 +198,7 @@ Compare new ideas vs original plan and highlight differences explicitly.
 
 ---
 
-Proceed with these changes? Type "yes" to revise plan or "cancel" to keep original.
+[YOUR TURN] - Proceed with these changes? Type "yes" to revise plan or "cancel" to keep original.
 ```
 
 **Why this matters:** Explicit comparison prevents misunderstandings. User sees exactly what's changing vs staying constant.
@@ -195,12 +224,12 @@ If user approves changes, update PLAN.md or whiteboard notes with revised approa
 - Decision ID: DECISION-004
 ```
 
-**Example STATE.md entry:**
+**Example WORK.md Key Decisions entry:**
 
 ```markdown
-| ID | Date | Decision | Why |
-|----|------|----------|-----|
-| DECISION-004 | 2026-01-25 | Revised PHASE-001: Card layout instead of timeline | User rethinking after whiteboard - cards more flexible |
+**[2026-01-25]** - [DECISION-004] Revised PHASE-001: Card layout instead of timeline
+- Rationale: User rethinking after whiteboard - cards more flexible
+- Impact: TASK-002 (UI), TASK-003 (styling)
 ```
 
 **If no changes needed:**
@@ -220,7 +249,7 @@ After review, you're sticking with the original approach. Recording this confirm
 - Decision: Timeline view still best fit
 - Rationale: Simpler implementation, meets requirements
 
-Returning to whiteboard-complete mode. Ready to proceed with execution?
+[YOUR TURN] - Returning to whiteboard-complete mode. Ready to proceed with execution?
 ```
 
 **Why this matters:** Confirmation is a decision too. Captures that user deliberately chose original approach after reconsidering.
@@ -341,7 +370,6 @@ AVAILABLE ACTIONS:
 
 NEXT: [What agent expects from user]
 SELF-CHECK: agent has completed the following action
-- [ ] STATE.md update
 - [ ] WORK.md update
 - [ ] INBOX.md update
 - [ ] HISTORY.md update
@@ -384,8 +412,7 @@ Revisit actions: /compare-plans (see original vs revised)
 
 NEXT: Type "yes" to approve revised plan or "cancel" to revert to original
 SELF-CHECK: agent has completed the following action
-- [x] STATE.md update (DECISION-004 recorded)
-- [x] WORK.md update (revision rationale captured)
+- [x] WORK.md update (DECISION-004 recorded, revision rationale captured)
 - [ ] INBOX.md update (no loops during revisit)
 - [ ] HISTORY.md update (no promotion yet)
 

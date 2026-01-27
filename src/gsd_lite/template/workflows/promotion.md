@@ -1,5 +1,13 @@
 # Promotion Workflow
 
+**⚠️ DEPRECATED: This workflow is deprecated. Use housekeeping.md for PR extraction and archiving.**
+
+**Reason for deprecation:** Promotion workflow has been superseded by the more comprehensive housekeeping.md workflow, which handles PR description generation, documentation updates, and session archiving in a unified process.
+
+**Migration path:** Use `/housekeeping` workflow instead of `/promotion`.
+
+---
+
 [SYSTEM: PROMOTION MODE - Phase Completion]
 
 ## Initialization Check
