@@ -105,8 +105,9 @@ Use this for "Big Wins" or complex fixes. This helps write the final PR descript
 Use this for the daily grind.
 
 ```markdown
-**[2026-01-22 15:45]** - TASK-002: Create auth.ts file
-- Result: Created file with generateToken function
+[LOG-042] - [2026-01-22 15:45] - [EXEC] - Task: AUTH-IMPL
+**Summary:** Created auth.ts file with generateToken function
+**Details:**
 - Files modified: src/auth.ts
 - Status: In Progress
 ```

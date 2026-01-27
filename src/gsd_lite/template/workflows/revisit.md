@@ -152,7 +152,9 @@ Listen to user's new thoughts and capture to WORK.md session log.
 **Agent captures to WORK.md:**
 
 ```markdown
-**[2026-01-25 16:30]** - [DECISION] Reconsidering layout approach
+[LOG-026] - [2026-01-25 16:30] - [DECISION] - Task: MODEL-A
+**Summary:** Reconsidering layout approach
+**Details:**
 - Original decision: Timeline view (simpler, cleaner)
 - New thinking: Card-based layout (more flexible, supports varying content)
 - Rationale: User realized timeline constrains content types too much
@@ -216,7 +218,9 @@ If user approves changes, update PLAN.md or whiteboard notes with revised approa
 **Example WORK.md entry:**
 
 ```markdown
-**[2026-01-25 16:45]** - [DECISION] Revised PHASE-001 plan - switched to card layout
+[LOG-027] - [2026-01-25 16:45] - [DECISION] - Task: MODEL-A
+**Summary:** Revised PHASE-001 plan - switched to card layout
+**Details:**
 - Original plan: Timeline view (approved 2026-01-24)
 - Revised plan: Card-based layout
 - Rationale: User realized timeline too constraining after thinking overnight
@@ -224,12 +228,10 @@ If user approves changes, update PLAN.md or whiteboard notes with revised approa
 - Decision ID: DECISION-004
 ```
 
-**Example WORK.md Key Decisions entry:**
+**Example WORK.md Key Events Index entry:**
 
 ```markdown
-**[2026-01-25]** - [DECISION-004] Revised PHASE-001: Card layout instead of timeline
-- Rationale: User rethinking after whiteboard - cards more flexible
-- Impact: TASK-002 (UI), TASK-003 (styling)
+| LOG-027 | 2026-01-25 | DECISION | MODEL-A | Revised to card layout instead of timeline |
 ```
 
 **If no changes needed:**

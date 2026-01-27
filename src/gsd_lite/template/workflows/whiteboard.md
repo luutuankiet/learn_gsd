@@ -214,9 +214,12 @@ Captured adjustment: Add password reset functionality
 When scope is adjusted, record in WORK.md Key Decisions section:
 
 ```markdown
-**[2026-01-25]** - [DECISION-001] Added TASK-004: Password reset flow
+[LOG-025] - [2026-01-25 14:30] - [DECISION] - Task: AUTH-IMPL
+**Summary:** Added TASK-004: Password reset flow
+**Details:**
 - Rationale: User requested during scope review
 - Impact: Adds email service dependency
+- Decision ID: DECISION-001
 ```
 
 This creates an audit trail of scope evolution.
