@@ -16,7 +16,7 @@ ENTRY FORMAT:
 **Resolution:** [How resolved, if applicable]
 
 WHY THIS FORMAT:
-- Agents grep headers ("### \[LOOP") to scan open loops without reading full content
+- Agents grep headers (`^### \[LOOP-`) to scan open loops without reading full content
 - Summary in header enables quick triage from grep output alone
 - Context section preserves the "why" - future agents/humans understand the situation
 - Code references anchor abstract concerns to concrete codebase locations
